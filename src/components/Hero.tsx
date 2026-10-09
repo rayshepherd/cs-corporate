@@ -35,17 +35,19 @@ export function Hero() {
                   <span
                     aria-hidden="true"
                     className={`absolute -left-8 top-6 h-[15px] w-[15px] rounded-full border-2 ${
-                      isUs ? "border-accent bg-accent" : "border-steel bg-paper"
+                      isUs ? "border-ink bg-ink" : "border-steel bg-paper"
                     }`}
                   />
                   <div
-                    className={`chain-node border px-5 py-4 ${
-                      isUs ? "border-accent" : "border-rule"
+                    className={`border px-5 py-4 ${
+                      isUs ? "border-ink bg-ink text-paper" : "chain-node border-rule"
                     }`}
-                    style={{ animationDelay: `${0.4 + i * 0.55}s` }}
+                    style={isUs ? undefined : { animationDelay: `${0.4 + i * 0.55}s` }}
                   >
-                    <p className={`font-semibold ${isUs ? "text-accent" : "text-ink"}`}>{step.title}</p>
-                    <p className="mt-1 text-[0.95rem] leading-snug text-steel">{step.text}</p>
+                    <p className="font-semibold">{step.title}</p>
+                    <p className={`mt-1 text-[0.95rem] leading-snug ${isUs ? "text-panel-text" : "text-steel"}`}>
+                      {step.text}
+                    </p>
                   </div>
                 </li>
               );

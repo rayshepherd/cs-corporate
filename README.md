@@ -8,8 +8,10 @@ Built with Next.js 16 (Node.js) and Tailwind CSS 4, hosted on Vercel.
 | What | File |
 | --- | --- |
 | All text, contact details, brands | `src/content/site.ts` |
-| Colours | top of `src/app/globals.css` (`:root` block) |
-| Logos | `public/logos/` (paths set in `site.ts`) |
+| News posts | `content/news/*.md` (one Markdown file per post) |
+| Colours (from the logos: #282828, #F8F0E8) | top of `src/app/globals.css` (`:root` block) |
+| Typeface | DM Sans, self-hosted — the typeface of the C&S logo |
+| Logos | `public/logos/` (paths set in `site.ts`); favicon is `src/app/icon.svg` |
 | Contact / reseller form (browser) | `src/components/ContactForm.tsx` |
 | Form backend | `src/app/api/contact/route.ts` |
 | Email sending | `src/lib/mail.ts` |
@@ -24,6 +26,24 @@ npm run dev                  # http://localhost:3000
 ```
 
 With no email or ERPNext settings, form submissions are printed in the terminal (development only).
+
+## Publishing news
+
+1. On GitHub, open `content/news/` and choose **Add file → Create new file**.
+2. Name it after the address you want, e.g. `new-showroom.md` becomes `/news/new-showroom`.
+3. Start it with this header, then write the post below it in Markdown:
+
+   ```
+   ---
+   title: Our new showroom is open
+   date: 2026-11-02
+   summary: One or two sentences shown in the news list.
+   draft: false
+   ---
+   ```
+
+4. Commit. Vercel rebuilds and the post is live in about a minute.
+   Posts with `draft: true` stay off the site.
 
 ## What the form does
 

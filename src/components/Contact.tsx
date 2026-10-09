@@ -61,14 +61,18 @@ export function Contact() {
                 </a>
               </dd>
             </div>
-            <div>
-              <dt className="text-sm text-steel">Opening hours</dt>
-              <dd className="mt-1">{company.hours}</dd>
-            </div>
+            {company.hours && (
+              <div>
+                <dt className="text-sm text-steel">Opening hours</dt>
+                <dd className="mt-1">{company.hours}</dd>
+              </div>
+            )}
           </dl>
         </div>
 
-        <ContactForm />
+        <div id="apply" className="scroll-mt-24">
+          <ContactForm />
+        </div>
       </div>
     </section>
   );

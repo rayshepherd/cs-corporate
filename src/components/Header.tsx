@@ -1,13 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { Logo } from "./Logo";
+import { ResellerLink } from "./ResellerLink";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#brands", label: "Brands" },
-  { href: "#resellers", label: "Resellers" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#brands", label: "Brands" },
+  { href: "/#resellers", label: "Resellers" },
+  { href: "/news", label: "News" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -16,23 +19,19 @@ export function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-rule bg-paper/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-[1180px] items-center justify-between px-5 md:px-8">
-        <a href="#top" aria-label="Back to top" className="text-ink">
+        <Link href="/" aria-label="Concepts & Standards home" className="text-ink">
           <Logo />
-        </a>
+        </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-[0.95rem] text-steel hover:text-ink">
+            <Link key={l.href} href={l.href} className="text-[0.95rem] text-steel hover:text-ink">
               {l.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#contact"
-            onClick={() => window.dispatchEvent(new CustomEvent("cs:open-reseller"))}
-            className="rounded-sm bg-accent px-4 py-2 text-[0.95rem] font-medium text-accent-ink hover:opacity-90"
-          >
+          <ResellerLink className="rounded-sm bg-accent px-4 py-2 text-[0.95rem] font-medium text-accent-ink hover:opacity-90">
             Become a reseller
-          </a>
+          </ResellerLink>
         </nav>
 
         <button
@@ -58,26 +57,22 @@ export function Header() {
           <ul className="flex flex-col">
             {links.map((l) => (
               <li key={l.href}>
-                <a
+                <Link
                   href={l.href}
                   onClick={() => setOpen(false)}
                   className="block border-b border-rule py-3 text-ink"
                 >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
-          <a
-            href="#contact"
-            onClick={() => {
-              setOpen(false);
-              window.dispatchEvent(new CustomEvent("cs:open-reseller"));
-            }}
+          <ResellerLink
+            onNavigate={() => setOpen(false)}
             className="mt-4 block rounded-sm bg-accent px-4 py-3 text-center font-medium text-accent-ink"
           >
             Become a reseller
-          </a>
+          </ResellerLink>
         </nav>
       )}
     </header>

@@ -54,8 +54,18 @@ export function ContactForm() {
       setErrors({});
       setStatus({ state: "idle" });
     };
+    const onHash = () => {
+      if (window.location.hash === "#apply") open();
+    };
+    // Arriving from another page with /#apply opens the reseller tab
+    const frame = requestAnimationFrame(onHash);
     window.addEventListener("cs:open-reseller", open);
-    return () => window.removeEventListener("cs:open-reseller", open);
+    window.addEventListener("hashchange", onHash);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("cs:open-reseller", open);
+      window.removeEventListener("hashchange", onHash);
+    };
   }, []);
 
   function switchTo(k: FormKind) {

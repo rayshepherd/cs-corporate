@@ -42,9 +42,9 @@ function BrandMark({ name, logo, size = "md" }: { name: string; logo: string; si
       <Image
         src={logo}
         alt={name}
-        width={size === "lg" ? 220 : 160}
-        height={size === "lg" ? 80 : 56}
-        className={`${size === "lg" ? "max-h-16" : "max-h-11"} w-auto object-contain`}
+        width={240}
+        height={80}
+        className={`${size === "lg" ? "h-14" : "h-10"} w-auto max-w-full object-contain`}
       />
     );
   }

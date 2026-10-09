@@ -1,6 +1,7 @@
 /**
  * All website text and data lives here.
  * Edit this file to change what the site says — no other code needs to change.
+ * News posts live separately, as Markdown files in /content/news.
  *
  * Anything marked TODO is placeholder content waiting for the real information.
  */
@@ -9,37 +10,33 @@ export const company = {
   legalName: "Concepts & Standards SARL",
   shortName: "Concepts & Standards",
   tradingAs: "DJ Lab",
-  // TODO: put the logo file in /public/logos/ and set the path, e.g. "/logos/cs-logo.svg"
-  logo: "",
-  logoOnDark: "", // version of the logo for the dark footer
-  tagline: "Distribution of DJ, pro audio, AV and musical instrument brands in Lebanon.",
-  // TODO: confirm founding year
-  founded: "20XX",
+  logo: "/logos/cs-logo.svg",
+  logoOnDark: "/logos/cs-logo-white.svg",
+  tagline: "Distributor of DJ, studio and musical instrument brands in Lebanon since 2015.",
+  founded: "2015",
   address: {
-    // TODO: real street address
-    line1: "Street, Building, Floor",
+    line1: "Harbor 682 Center, ATCL Street",
     city: "Kaslik",
     country: "Lebanon",
-    mapUrl: "", // TODO: Google Maps share link
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Harbor+682+Center+ATCL+Street+Kaslik+Lebanon",
   },
-  phone: "+961 X XXX XXX", // TODO
-  whatsapp: "", // TODO: e.g. "9613XXXXXX" (digits only) to show a WhatsApp link
-  email: "info@example.com", // TODO
-  hours: "Monday to Friday, 9:00 to 18:00", // TODO
-  // TODO: commercial register number, shown in the footer
-  registration: "CR No. XXXXX",
+  phone: "+961 70 567 149",
+  whatsapp: "", // TODO: set to "96170567149" if this number is on WhatsApp
+  email: "info@conceptsandstandards.com",
+  hours: "", // TODO: e.g. "Monday to Friday, 9:00 to 18:00" (hidden while empty)
+  registration: "CR 2041133",
   social: {
     instagram: "", // TODO
     facebook: "", // TODO
-    linkedin: "", // TODO
+    linkedin: "https://www.linkedin.com/company/concepts-&-standards-sarl",
   },
 };
 
 export const hero = {
   heading: "The brands behind Lebanon's stages, studios and booths.",
   body:
-    "Concepts & Standards imports, stocks and supports DJ, pro audio, AV and musical instrument brands, " +
-    "and supplies them to retailers, installers and professionals across the country.",
+    "Since 2015, Concepts & Standards has imported, stocked and supported leading DJ and studio equipment " +
+    "brands, and now musical instruments too, for retailers and professionals across Lebanon.",
   primaryCta: "Become a reseller",
   secondaryCta: "See our brands",
 };
@@ -48,47 +45,48 @@ export const hero = {
 export const chain = [
   { title: "Manufacturers", text: "International brands appoint us to represent them." },
   { title: "Concepts & Standards", text: "We import, stock, price and provide warranty." },
-  { title: "Resellers", text: "Stores, installers and rental companies buy from us." },
-  { title: "Stage and studio", text: "DJs, musicians and venues use the gear." },
+  { title: "Resellers", text: "Stores, installers and studios buy from us." },
+  { title: "Stage and studio", text: "DJs, producers and musicians use the gear." },
 ];
 
 export const about = {
   heading: "Who we are",
-  // TODO: replace with your own story
   paragraphs: [
-    "Concepts & Standards SARL is a Lebanese distribution company. Under the DJ Lab name we have supplied DJs, " +
-      "producers and venues for years, and we now carry a growing range of musical instruments alongside our DJ " +
-      "and audio lines.",
-    "We hold local stock, handle warranty and after-sales service in Lebanon, and work with a network of " +
-      "resellers who bring these products to their own customers.",
+    "Concepts & Standards opened in Kaslik in 2015 as a DJ gear store. As more DJs and producers came to us for " +
+      "advice, stock and after-sales service, the shop grew into something larger: a distributor representing some " +
+      "of the world's finest DJ and studio equipment brands in Lebanon, and supplying them to resellers across the country.",
+    "In 2020 we founded our sister company, Triangle Square Trading LLC, in Dubai. In 2024 we took the same approach " +
+      "into musical instruments, and today we represent major instrument brands alongside our DJ and studio lines.",
+    "The way we work has not changed since the first day in Kaslik: keep stock in the country, stand behind every " +
+      "product with local warranty and service, and give our resellers what they need to sell with confidence.",
   ],
-  // Short facts shown beside the text. TODO: confirm every value.
   facts: [
-    { label: "Founded", value: "20XX" },
-    { label: "Showroom", value: "Kaslik, Lebanon" },
-    { label: "Product areas", value: "DJ, pro audio, AV, instruments" },
-    { label: "Sister company", value: "Triangle Square Trading LLC, UAE" },
+    { label: "Founded", value: "2015, Kaslik" },
+    { label: "Head office", value: "Harbor 682 Center, Kaslik" },
+    { label: "Product areas", value: "DJ, studio, musical instruments" },
+    { label: "Sister company", value: "Triangle Square Trading LLC, Dubai" },
   ],
 };
 
-/** Brands owned or operated by the company. */
+/** Our own brand and group companies. */
 export const ownBrands = {
-  heading: "Our brands",
-  intro: "The names we built and run ourselves.",
+  heading: "Our group",
+  intro: "Concepts & Standards trades as DJ Lab in Lebanon and works alongside its sister company in the UAE.",
   items: [
     {
       name: "DJ Lab",
-      logo: "", // TODO: e.g. "/logos/own/djlab.svg"
-      // TODO: describe DJ Lab in your words (store, showroom, café, academy...?)
+      logo: "/logos/own/djlab.svg",
+      // TODO: confirm how you want DJ Lab described
       text:
-        "Our retail and showroom brand in Kaslik, where customers try equipment before they buy and get " +
-        "advice from people who use it.",
-      url: "", // TODO: e.g. "https://djlab.xyz"
+        "The name DJs and producers in Lebanon have known us by since 2015. DJ Lab is the trading name of " +
+        "Concepts & Standards for retail and professional customers.",
+      url: "",
     },
     {
-      name: "DJ Lab Café",
-      logo: "", // TODO
-      text: "A café inside our Kaslik space where the DJ and music community meets.", // TODO: confirm
+      name: "Triangle Square Trading LLC",
+      logo: "",
+      text:
+        "Our sister company in Dubai, founded in 2020, serving customers and partners in the United Arab Emirates.",
       url: "",
     },
   ],
@@ -103,10 +101,10 @@ export const distributedBrands = {
   heading: "Brands we distribute",
   intro:
     "We are the Lebanese distributor for the brands below. Resellers can order every one of them from local stock.",
-  // TODO: replace placeholders with your real brands and categories
+  // TODO: real brands and logos to come
   categories: [
     {
-      name: "DJ and production",
+      name: "DJ equipment",
       brands: [
         { name: "Brand one", logo: "", url: "" },
         { name: "Brand two", logo: "", url: "" },
@@ -114,7 +112,7 @@ export const distributedBrands = {
       ],
     },
     {
-      name: "Pro audio",
+      name: "Studio and production",
       brands: [
         { name: "Brand four", logo: "", url: "" },
         { name: "Brand five", logo: "", url: "" },
@@ -128,19 +126,13 @@ export const distributedBrands = {
         { name: "Brand eight", logo: "", url: "" },
       ],
     },
-    {
-      name: "AV and lighting",
-      brands: [{ name: "Brand nine", logo: "", url: "" }],
-    },
   ],
 };
 
 export const resellers = {
   heading: "Sell our brands",
   intro:
-    "We work with music stores, online shops, installers and rental companies across Lebanon. " +
-    "Approved resellers get:",
-  // TODO: confirm what you actually offer resellers
+    "We work with music stores, online shops, installers and studios across Lebanon. Approved resellers get:",
   benefits: [
     { title: "Local stock", text: "Order from our warehouse in Lebanon instead of importing yourself." },
     { title: "Reseller pricing", text: "Trade prices with protected margins on every brand we carry." },
@@ -156,7 +148,8 @@ export const contact = {
     "Music or electronics store",
     "Online shop",
     "Installer or integrator",
-    "Rental or production company",
+    "Recording or production studio",
+    "Rental or events company",
     "Venue or club",
     "Other",
   ],

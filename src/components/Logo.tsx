@@ -9,9 +9,9 @@ export function Logo({ onDark = false }: { onDark?: boolean }) {
       <Image
         src={src}
         alt={company.legalName}
-        width={180}
-        height={44}
-        className="h-9 w-auto"
+        width={285}
+        height={63}
+        className="h-10 w-auto"
         priority={!onDark}
       />
     );
