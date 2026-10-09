@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Concepts & Standards — corporate website
 
-## Getting Started
+One-page corporate site for Concepts & Standards SARL (trading as DJ Lab).
+Built with Next.js 16 (Node.js) and Tailwind CSS 4, hosted on Vercel.
 
-First, run the development server:
+## Where things are
+
+| What | File |
+| --- | --- |
+| All text, contact details, brands | `src/content/site.ts` |
+| Colours | top of `src/app/globals.css` (`:root` block) |
+| Logos | `public/logos/` (paths set in `site.ts`) |
+| Contact / reseller form (browser) | `src/components/ContactForm.tsx` |
+| Form backend | `src/app/api/contact/route.ts` |
+| Email sending | `src/lib/mail.ts` |
+| ERPNext Lead creation | `src/lib/erpnext.ts` |
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # fill in values, or leave empty to just log submissions
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+With no email or ERPNext settings, form submissions are printed in the terminal (development only).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## What the form does
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Rejects spam silently (hidden trap field, and forms filled in under 3 seconds).
+2. Validates fields and shows a message under each one that needs fixing.
+3. ERPNext: looks for a Lead with the same email. If found, adds the submission as a comment on it;
+   otherwise creates a Lead (type **Client** for messages, **Channel Partner** for reseller applications)
+   and adds the full submission as a comment.
+4. Email: sends a summary to `MAIL_TO` (or `MAIL_TO_RESELLER` for applications), with Reply-To set to the
+   sender and a link to the Lead in ERPNext.
+5. If one of the two fails, the visitor still sees success and the error is in the Vercel logs.
+   If both fail, the visitor is asked to email directly.
 
-## Learn More
+## ERPNext setup (one time)
 
-To learn more about Next.js, take a look at the following resources:
+1. Create a user, e.g. `website@…`, with only the roles needed to create **Lead** and **Comment**
+   (Sales User is enough).
+2. On that user: **Settings → API Access → Generate Keys**. Copy the key and secret.
+3. Optional: create a **Lead Source** called `Website` and set `ERPNEXT_LEAD_SOURCE=Website`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy to Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push this folder to a GitHub repository.
+2. In Vercel: **Add New → Project → Import** the repository. Framework is detected as Next.js; no build
+   settings need changing.
+3. **Settings → Environment Variables**: add everything from `.env.example`.
+4. Deploy. Every push to `main` redeploys automatically.
+5. **Settings → Domains**: add the domain and set the DNS records Vercel shows at your registrar.
 
-## Deploy on Vercel
+## Checks before each release
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npm run build
+```

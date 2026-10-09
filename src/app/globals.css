@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
+/*
+ * Brand tokens. When the official palette arrives, change these values only.
+ * paper   – page background
+ * ink     – main text
+ * steel   – secondary text
+ * rule    – hairlines and borders
+ * accent  – buttons, links, the signal in the hero
+ * panel   – dark sections (footer)
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #f1f2ef;
+  --paper-raised: #fbfbfa;
+  --ink: #1a1f24;
+  --steel: #59636c;
+  --rule: #cdd2d3;
+  --accent: #2447c8;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3e8f8;
+  --panel: #1e262d;
+  --panel-text: #d9dee1;
+  --danger: #b3261e;
+  --ok: #1d6b47;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-steel: var(--steel);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-panel: var(--panel);
+  --color-panel-text: var(--panel-text);
+  --color-danger: var(--danger);
+  --color-ok: var(--ok);
+  --font-sans: "Archivo Variable", "Archivo", system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-variant-numeric: lining-nums;
+}
+
+/* Headings use the expanded width of Archivo — like lettering on an equipment panel */
+.display {
+  font-stretch: 125%;
+  font-weight: 620;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+}
+
+.measure {
+  max-width: 62ch;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Hero signal: one pulse travelling down the chain once the page loads */
+@keyframes signal-travel {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.signal-dot {
+  animation: signal-travel 2.4s cubic-bezier(0.45, 0, 0.25, 1) 0.4s 2 both;
+}
+
+@keyframes node-lit {
+  0%,
+  100% {
+    background: var(--paper-raised);
+  }
+  30% {
+    background: var(--accent-soft);
+  }
+}
+
+.chain-node {
+  animation: node-lit 2.4s ease-out both;
+  animation-iteration-count: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signal-dot,
+  .chain-node {
+    animation: none;
+  }
+  .signal-dot {
+    display: none;
+  }
 }
