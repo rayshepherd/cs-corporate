@@ -5,7 +5,7 @@ import { company, hero } from "@/content/site";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://conceptsandstandards.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.conceptsandstandards.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
