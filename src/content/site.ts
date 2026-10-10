@@ -71,19 +71,73 @@ export const chain: { title: string; text: string; icon: "globe" | "box" | "shop
 export const about = {
   heading: "Who we are",
   paragraphs: [
-    "Concepts & Standards opened in Kaslik in 2015 as a DJ gear store. As more DJs and producers came to us for " +
-      "advice, stock and after-sales service, the shop grew into something larger: a distributor representing some " +
-      "of the world's finest DJ and studio equipment brands in Lebanon, and supplying them to resellers across the country.",
-    "In 2020 we founded our sister company, Triangle Square Trading LLC, in Dubai. In 2024 we took the same approach " +
-      "into musical instruments, and today we represent major instrument brands alongside our DJ and studio lines.",
-    "The way we work has not changed since the first day in Kaslik: keep stock in the country, stand behind every " +
-      "product with local warranty and service, and give our resellers what they need to sell with confidence.",
+    "Concepts & Standards S.A.R.L. holds exclusive distribution rights for 37 of the world’s most respected music " +
+      "brands, spanning DJ and studio equipment, synthesizers and keys, guitars and amplification, and drums and percussion.",
+    "We act as each brand’s partner on the ground. We import and hold stock, set local pricing, support a network of " +
+      "resellers across the country, and look after every product long after it is sold.",
   ],
   facts: [
     { label: "Founded", value: "2015, Kaslik" },
-    { label: "Head office", value: "Harbor 682 Center, Kaslik" },
-    { label: "Product areas", value: "DJ, studio, musical instruments" },
-    { label: "Sister company", value: "Triangle Square Trading LLC, Dubai" },
+    { label: "Exclusive brands", value: "37" },
+    { label: "Offices", value: "Kaslik, Lebanon and Dubai, UAE" },
+    { label: "After-sales", value: "Local repair and original parts" },
+  ],
+};
+
+/**
+ * Our journey: milestones in date order.
+ * photo: put the image in /public/media/journey/ and set the path, e.g. "/media/journey/old-kaslik.jpg".
+ * Photos are shown in black and white to match the site. Leave photo empty to show a placeholder frame.
+ */
+export const journey = {
+  heading: "Our journey",
+  milestones: [
+    {
+      year: "2015",
+      title: "Where it started",
+      text: "A DJ gear store in Kaslik, built around advice, stock and after-sales service for DJs and producers.",
+      photo: "", // TODO: old Kaslik premises
+      photoAlt: "The original Concepts & Standards store in Kaslik",
+    },
+    {
+      year: "20XX", // TODO: year the Beirut showroom opened
+      title: "A showroom in Beirut",
+      text: "Our Beirut showroom brought the brands closer to the city’s artists, studios and venues.",
+      photo: "", // TODO: Beirut showroom
+      photoAlt: "The Concepts & Standards showroom in Beirut",
+    },
+    {
+      year: "2020",
+      title: "Triangle Square, Dubai",
+      text: "Our sister company opened in Dubai as a regional distributor, with its own operations in mainland UAE.",
+      photo: "",
+      photoAlt: "",
+    },
+    {
+      year: "2024",
+      title: "Musical instruments",
+      text: "Guitars, keys, drums and percussion joined our DJ and studio lines, from Gibson and Nord to DW and LP.",
+      photo: "",
+      photoAlt: "",
+    },
+    {
+      year: "20XX", // TODO: year the new Kaslik premises opened
+      title: "Our new home in Kaslik",
+      text: "New premises at Harbor 682 Center, ATCL Street, bringing offices, stock and service under one roof.",
+      photo: "", // TODO: new Kaslik premises
+      photoAlt: "The Concepts & Standards premises at Harbor 682 Center, Kaslik",
+    },
+  ],
+};
+
+/** After-sales service, shown in About. */
+export const service = {
+  heading: "Service and support",
+  intro: "Every product we distribute is supported in Lebanon, from the first sale to the last repair.",
+  points: [
+    { title: "Local repairs", text: "Our technicians repair products here, without sending them abroad." },
+    { title: "Original spare parts", text: "We source genuine parts directly from the manufacturer when they are needed." },
+    { title: "Manufacturer warranty", text: "Warranty follows each manufacturer’s own policy, handled locally by us." },
   ],
 };
 
@@ -105,7 +159,7 @@ export const ownBrands = {
       name: "Triangle Square Trading LLC",
       logo: "",
       text:
-        "Our sister company in Dubai, founded in 2020, serving customers and partners in the United Arab Emirates.",
+        "Our sister company in Dubai, founded in 2020. A regional distributor with its own operations in mainland UAE.",
       url: "",
     },
   ],
@@ -113,38 +167,32 @@ export const ownBrands = {
 
 /**
  * Brands we distribute, grouped by category.
- * For each brand add the logo file to /public/logos/brands/ and set `logo`.
- * Leave `logo` empty to show the brand name as text.
+ * For each brand add the logo file to /public/logos/brands/ and set `logo`, e.g. "/logos/brands/gibson.svg".
+ * Leave `logo` empty to show the brand name as text. `url` (optional) links to the brand's website.
  */
+const b = (name: string) => ({ name, logo: "", url: "" });
 export const distributedBrands = {
   heading: "Brands we distribute",
-  intro:
-    "We are the Lebanese distributor for the brands below. Resellers can order every one of them from local stock.",
-  // TODO: real brands and logos to come
+  intro: "We hold exclusive distribution rights for every brand below. Resellers order all of them from our local stock.",
   categories: [
+    { name: "DJ", brands: ["Reloop", "Hercules", "Phase", "AIAIAI", "Glorious"].map(b) },
     {
-      name: "DJ equipment",
-      brands: [
-        { name: "Brand one", logo: "", url: "" },
-        { name: "Brand two", logo: "", url: "" },
-        { name: "Brand three", logo: "", url: "" },
-      ],
+      name: "Studio and recording",
+      brands: ["ADAM Audio", "KRK Systems", "Kanto", "Focusrite", "Sontronics", "Sonarworks", "Monkey Banana"].map(b),
     },
     {
-      name: "Studio and production",
-      brands: [
-        { name: "Brand four", logo: "", url: "" },
-        { name: "Brand five", logo: "", url: "" },
-      ],
+      name: "Synthesizers and keys",
+      brands: ["Novation", "Arturia", "Sequential", "Teenage Engineering", "Nord", "GEWA Keys"].map(b),
     },
     {
-      name: "Musical instruments",
-      brands: [
-        { name: "Brand six", logo: "", url: "" },
-        { name: "Brand seven", logo: "", url: "" },
-        { name: "Brand eight", logo: "", url: "" },
-      ],
+      name: "Guitars, bass and amplification",
+      brands: ["Gibson", "Epiphone", "Solar Guitars", "S by Solar", "Orange", "EBS", "Strymon", "Palmer", "GHS Strings"].map(b),
     },
+    {
+      name: "Drums and percussion",
+      brands: ["DW", "PDP", "Premier Percussion", "LP", "Vater Percussion", "Bosphorus Cymbals", "Schlagwerk"].map(b),
+    },
+    { name: "Stands, cables and accessories", brands: ["Gravity", "Adam Hall Cables", "Earproof"].map(b) },
   ],
 };
 

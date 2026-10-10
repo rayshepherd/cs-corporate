@@ -45,8 +45,10 @@ export function SignalChain() {
     if (!box || !ol || !path || !dot || !sockets) return;
     const items = Array.from(ol.children) as HTMLElement[];
     let pts: [number, number][] = [];
+    let at = -1; // current distance of the pulse along the cable (-1: not placed yet)
 
     const place = (len: number) => {
+      at = len;
       const p = path.getPointAtLength(Math.max(0, Math.min(len, path.getTotalLength())));
       dot.setAttribute("cx", String(p.x));
       dot.setAttribute("cy", String(p.y));
@@ -78,6 +80,8 @@ export function SignalChain() {
       sockets.innerHTML = pts
         .map(([x, y]) => `<circle cx="${x}" cy="${y}" r="4" fill="var(--paper)" stroke="currentColor" stroke-width="1.5"/>`)
         .join("");
+      // Keep the pulse on its jack after a re-layout (and before the animation first runs)
+      place(at < 0 ? usIndex * (path.getTotalLength() / Math.max(1, pts.length - 1)) : at);
       dot.style.opacity = "1";
     };
     layout();
