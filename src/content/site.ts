@@ -33,10 +33,12 @@ export const company = {
 };
 
 export const hero = {
-  heading: "The brands behind Lebanon's stages, studios and booths.",
+  // Each line of the heading starts on its own line on screen
+  heading: ["Beirut-based.", "Handpicking the world’s most reputable music brands since 2015."],
   body:
-    "Since 2015, Concepts & Standards has imported, stocked and supported leading DJ and studio equipment " +
-    "brands, and now musical instruments too, for retailers and professionals across Lebanon.",
+    "Concepts & Standards S.A.R.L. connects Lebanese artists with the brands they trust. What began with " +
+    "leading DJ and studio equipment now spans musical instruments too, supplied to retailers, " +
+    "professionals and hobbyists alike.",
   primaryCta: "Become a reseller",
   secondaryCta: "See our brands",
   /**
