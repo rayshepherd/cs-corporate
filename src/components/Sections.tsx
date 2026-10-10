@@ -112,7 +112,7 @@ export function Resellers() {
         <SectionHeading title={resellers.heading} intro={resellers.intro} />
         <ul className="grid gap-x-12 gap-y-10 sm:grid-cols-2">
           {resellers.benefits.map((b) => (
-            <li key={b.title} className="border-l-2 border-accent pl-5">
+            <li key={b.title} className="border-t border-ink pt-4">
               <h3 className="font-semibold">{b.title}</h3>
               <p className="mt-2 text-steel">{b.text}</p>
             </li>

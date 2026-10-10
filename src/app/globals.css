@@ -2,27 +2,27 @@
 
 /*
  * Brand tokens. To change the site's colours, edit these values only.
- * Taken from the logos: charcoal #282828 and cream #f8f0e8.
+ * Pure white page, black type, fine grey rules.
  * paper   – page background
  * ink     – main text
- * steel   – secondary text
+ * steel   – secondary text (6.4:1 contrast on white)
  * rule    – hairlines and borders
- * accent  – buttons, links, the signal in the hero
- * panel   – dark sections (footer)
+ * accent  – buttons and links
+ * panel   – the one solid block (Concepts & Standards in the hero)
  */
 :root {
-  --paper: #f8f0e8; /* DJ Lab cream, from the logo */
-  --paper-raised: #fffdfa;
-  --ink: #282828; /* charcoal, from the logo */
-  --steel: #6a645e;
-  --rule: #e0d5c9;
-  --accent: #282828;
-  --accent-ink: #f8f0e8;
-  --accent-soft: #ece1d5;
-  --panel: #282828;
-  --panel-text: #d8cfc5;
-  --danger: #a3261d;
-  --ok: #2f6a4a;
+  --paper: #ffffff;
+  --paper-raised: #ffffff;
+  --ink: #000000;
+  --steel: #5f5f5f;
+  --rule: #e4e4e4;
+  --accent: #000000;
+  --accent-ink: #ffffff;
+  --accent-soft: #f2f2f2;
+  --panel: #000000;
+  --panel-text: #bdbdbd;
+  --danger: #b42318;
+  --ok: #1f6b45;
 }
 
 @theme inline {
@@ -63,9 +63,14 @@ body {
 
 /* Headings: DM Sans, the typeface of the Concepts & Standards logo */
 .display {
-  font-weight: 560;
-  letter-spacing: -0.028em;
-  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.032em;
+  line-height: 1.04;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .measure {
@@ -130,7 +135,7 @@ body {
   margin-top: 1.1em;
 }
 .prose-cs h2 {
-  font-weight: 560;
+  font-weight: 500;
   font-size: 1.5rem;
   letter-spacing: -0.02em;
   line-height: 1.2;

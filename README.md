@@ -9,7 +9,7 @@ Built with Next.js 16 (Node.js) and Tailwind CSS 4, hosted on Vercel.
 | --- | --- |
 | All text, contact details, brands | `src/content/site.ts` |
 | News posts | `content/news/*.md` (one Markdown file per post) |
-| Colours (from the logos: #282828, #F8F0E8) | top of `src/app/globals.css` (`:root` block) |
+| Colours (white #FFFFFF, black #000000, grey rules) | top of `src/app/globals.css` (`:root` block) |
 | Typeface | DM Sans, self-hosted — the typeface of the C&S logo |
 | Logos | `public/logos/` (paths set in `site.ts`); favicon is `src/app/icon.svg` |
 | Contact / reseller form (browser) | `src/components/ContactForm.tsx` |
