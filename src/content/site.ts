@@ -143,7 +143,7 @@ export const service = {
   ],
 };
 
-/** Our own brand and group companies. */
+/** Our own brands and group companies. `url` links the logo to the brand's website (opens in a new tab). */
 export const ownBrands = {
   heading: "Our group",
   // The non-breaking spaces ( ) keep "in the UAE." together on one line, even on phones
@@ -156,21 +156,20 @@ export const ownBrands = {
       text:
         "The name DJs and producers in Lebanon have known us by since 2015. DJ Lab is the trading name of " +
         "Concepts & Standards for retail and professional customers.",
-      url: "",
+      url: "https://djlab-lb.com",
     },
     {
       name: "Triangle Square Trading LLC",
       logo: "/logos/own/triangle-square.svg",
       text:
         "Our sister company in Dubai, founded in 2020. A regional distributor with its own operations in mainland UAE.",
-      url: "",
+      url: "https://trianglesquare.ae",
     },
     {
       name: "MPFreaks",
       logo: "/logos/own/mpfreaks.png",
-      // TODO: confirm the description, and add the website address to `url`
-      text: "Our online retail business in the UAE, bringing music gear to customers across the Emirates.",
-      url: "",
+      text: "Triangle Square’s online retail brand, bringing music gear to customers across the UAE.",
+      url: "https://mpfreaks.com",
     },
   ],
 };

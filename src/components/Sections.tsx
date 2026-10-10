@@ -150,14 +150,21 @@ function Group() {
         {ownBrands.items.map((b) => (
           <li key={b.name} className="flex flex-col">
             <div className="flex h-16 items-center">
-              <BrandMark name={b.name} logo={b.logo} size="lg" />
+              {b.url ? (
+                <a
+                  href={b.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${b.name} website (opens in a new tab)`}
+                  className="transition-opacity hover:opacity-60"
+                >
+                  <BrandMark name={b.name} logo={b.logo} size="lg" />
+                </a>
+              ) : (
+                <BrandMark name={b.name} logo={b.logo} size="lg" />
+              )}
             </div>
             <p className="mt-6 text-steel">{b.text}</p>
-            {b.url && (
-              <a href={b.url} className="mt-6 font-medium text-accent underline-offset-4 hover:underline">
-                Visit {b.name}
-              </a>
-            )}
           </li>
         ))}
       </ul>
