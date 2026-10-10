@@ -73,7 +73,7 @@ export const about = {
   paragraphs: [
     "Concepts & Standards S.A.R.L. holds exclusive distribution rights for 37 of the world’s most respected music " +
       "brands, spanning DJ and studio equipment, synthesizers and keys, guitars and amplification, and drums and percussion.",
-    "We act as each brand’s partner on the ground in order to help them reach new markets in which we strive. " +
+    "We act as each brand’s partner on the ground in order to help them reach new markets where we thrive. " +
       "We import and hold stock, set local pricing, support a network of resellers across the country, and look " +
       "after every product long after it is sold.",
   ],
@@ -88,8 +88,8 @@ export const about = {
 /**
  * Our journey: milestones in date order.
  * photo: put the image in /public/media/journey/ and set the path, e.g. "/media/journey/old-kaslik.jpg".
- * Photos are shown in black and white to match the site (full colour on hover). Leave photo empty to show a
- * placeholder frame; leave photo and photoAlt both empty for a milestone without a picture.
+ * Photos are shown wide (16:9), in black and white with full colour on hover, with the text laid over
+ * them in alternating corners. A milestone without a photo shows as text only.
  */
 export const journey = {
   heading: "Our journey",
@@ -123,7 +123,7 @@ export const journey = {
       photoAlt: "The musical instruments space, with guitars on display",
     },
     {
-      year: "20XX", // TODO: year the new Kaslik premises opened
+      year: "2025",
       title: "Our new home in Kaslik",
       text: "New premises at Harbor 682 Center, ATCL Street, bringing offices, stock and service under one roof.",
       photo: "/media/journey/kaslik-new.jpg",

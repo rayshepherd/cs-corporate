@@ -72,36 +72,51 @@ function Journey() {
   return (
     <div>
       <PartHeading title={journey.heading} />
-      <ol className="border-b border-rule">
-        {journey.milestones.map((m) => {
-          const hasFrame = Boolean(m.photo || m.photoAlt);
+      <ol className="space-y-6 md:space-y-8">
+        {journey.milestones.map((m, i) => {
+          const right = i % 2 === 1; // alternate corners: left, right, left…
+          const words = (
+            <>
+              <p className="display text-[2.2rem] leading-none md:text-[3.2rem]">{m.year}</p>
+              <h4 className="mt-2 text-[1.15rem] font-semibold md:mt-3 md:text-[1.3rem]">{m.title}</h4>
+            </>
+          );
+          if (!m.photo) {
+            return (
+              <li key={`${m.year}-${m.title}`} className="border-t border-ink pt-6">
+                {words}
+                <p className="measure mt-2 text-steel">{m.text}</p>
+              </li>
+            );
+          }
           return (
-            <li
-              key={`${m.year}-${m.title}`}
-              className={`grid gap-4 border-t border-rule py-8 md:gap-10 ${
-                hasFrame ? "md:grid-cols-[140px_1fr_400px]" : "md:grid-cols-[140px_1fr]"
-              }`}
-            >
-              <p className="display text-[1.8rem] leading-none md:text-[2.2rem]">{m.year}</p>
-              <div className="measure md:pt-1">
-                <h4 className="text-[1.15rem] font-semibold">{m.title}</h4>
-                <p className="mt-2 text-steel">{m.text}</p>
-              </div>
-              {hasFrame && (
-                <div className="group relative aspect-[4/3] w-full overflow-hidden border border-rule bg-[#f4f4f4]">
-                  {m.photo ? (
-                    <Image
-                      src={m.photo}
-                      alt={m.photoAlt}
-                      fill
-                      sizes="(min-width: 768px) 400px, 100vw"
-                      className="object-cover grayscale transition-[filter] duration-500 group-hover:grayscale-0"
-                    />
-                  ) : (
-                    <span className="absolute inset-0 grid place-items-center text-sm text-steel">Photo to come</span>
-                  )}
-                </div>
-              )}
+            <li key={`${m.year}-${m.title}`}>
+              <figure className="group relative aspect-[4/3] overflow-hidden bg-ink md:aspect-[16/9]">
+                <Image
+                  src={m.photo}
+                  alt={m.photoAlt}
+                  fill
+                  sizes="(min-width: 1180px) 1116px, 100vw"
+                  className="object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0"
+                />
+                {/* Fade behind the text so white type stays readable on bright photos */}
+                <div
+                  aria-hidden="true"
+                  className={`absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent md:via-transparent ${
+                    right ? "md:bg-gradient-to-tl" : "md:bg-gradient-to-tr"
+                  }`}
+                />
+                <figcaption
+                  className={`absolute bottom-0 p-5 text-white md:max-w-[46%] md:p-10 ${
+                    right ? "left-0 md:left-auto md:right-0 md:text-right" : "left-0"
+                  }`}
+                >
+                  {words}
+                  <p className="mt-3 hidden text-[1.05rem] leading-relaxed text-white/85 md:block">{m.text}</p>
+                </figcaption>
+              </figure>
+              {/* On phones the paragraph sits under the photo */}
+              <p className="measure mt-3 text-steel md:hidden">{m.text}</p>
             </li>
           );
         })}
