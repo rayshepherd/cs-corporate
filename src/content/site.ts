@@ -39,6 +39,16 @@ export const hero = {
     "brands, and now musical instruments too, for retailers and professionals across Lebanon.",
   primaryCta: "Become a reseller",
   secondaryCta: "See our brands",
+  /**
+   * Background loop behind the hero. Made with scripts/make-hero-video.sh.
+   * Leave mp4 empty to show no video. opacity: 0 (invisible) to 1 (full strength).
+   */
+  video: {
+    mp4: "",
+    webm: "",
+    poster: "",
+    opacity: 0.16,
+  } as { mp4: string; webm: string; poster: string; opacity?: number },
 };
 
 /** The signal chain in the hero: what a distributor does, in order. */

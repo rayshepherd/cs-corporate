@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 import { ResellerLink } from "./ResellerLink";
 
@@ -15,9 +15,21 @@ const links = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  // Transparent over the hero; turns white once the page scrolls, so the top reads as one surface
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-rule bg-paper/95 backdrop-blur">
+    <header
+      className={`sticky top-0 z-30 transition-colors duration-200 ${
+        scrolled || open ? "bg-paper/90 backdrop-blur" : "bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex h-16 max-w-[1180px] items-center justify-between px-5 md:px-8">
         <Link href="/" aria-label="Concepts & Standards home" className="text-ink">
           <Logo />

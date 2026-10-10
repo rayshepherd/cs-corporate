@@ -45,6 +45,20 @@ With no email or ERPNext settings, form submissions are printed in the terminal 
 4. Commit. Vercel rebuilds and the post is live in about a minute.
    Posts with `draft: true` stay off the site.
 
+## Hero background video
+
+The hero can play a pale, black-and-white, pixelated loop (a DJ clip crossfading into a band clip).
+
+```bash
+scripts/make-hero-video.sh dj.mp4 band.mp4 [dj_start] [band_start] [seconds_each]
+# e.g. take 6 s of each, starting 12 s into the DJ clip and 30 s into the band clip:
+scripts/make-hero-video.sh dj.mp4 band.mp4 12 30 6
+```
+
+It writes `public/media/hero.mp4`, `hero.webm` and `hero-poster.jpg`. Then set `hero.video` in
+`src/content/site.ts`. Adjust `opacity` there; tune pixel size and grey tones with
+`BLOCK=8 LEVELS=6` before the command. Visitors who ask for reduced motion see the still poster.
+
 ## What the form does
 
 1. Rejects spam silently (hidden trap field, and forms filled in under 3 seconds).
