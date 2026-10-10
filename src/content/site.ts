@@ -188,8 +188,14 @@ const brandLogos: Record<string, string> = {
   AIAIAI: "/logos/brands/aiaiai.svg",
   Glorious: "/logos/brands/glorious.svg",
 };
-const brandScale: Record<string, number> = { AIAIAI: 0.85 };
-const brandUrls: Record<string, string> = {};
+const brandScale: Record<string, number> = {};
+const brandUrls: Record<string, string> = {
+  Reloop: "https://www.reloop.com",
+  Hercules: "https://www.hercules.com",
+  Phase: "https://phase.dj",
+  AIAIAI: "https://aiaiai.audio",
+  Glorious: "https://www.glorious.de",
+};
 const b = (name: string) => ({
   name,
   logo: brandLogos[name] ?? "",

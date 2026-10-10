@@ -233,13 +233,19 @@ export function Brands() {
           {distributedBrands.categories.map((cat) => (
             <div key={cat.name} className="grid gap-5 md:grid-cols-[220px_1fr] md:gap-10">
               <h3 className="border-t border-ink pt-3 font-semibold">{cat.name}</h3>
-              <ul className="grid grid-cols-2 border-l border-t border-rule sm:grid-cols-3 lg:grid-cols-4">
+              <ul className="grid grid-cols-2 gap-x-8 sm:grid-cols-3 lg:grid-cols-4">
                 {cat.brands.map((b) => {
                   const inner = <BrandMark name={b.name} logo={b.logo} scale={b.scale} />;
                   return (
-                    <li key={b.name} className="flex h-28 items-center justify-center border-b border-r border-rule bg-paper-raised px-4 text-center">
+                    <li key={b.name} className="flex h-24 items-center">
                       {b.url ? (
-                        <a href={b.url} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} website`}>
+                        <a
+                          href={b.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${b.name} website (opens in a new tab)`}
+                          className="transition-opacity hover:opacity-60"
+                        >
                           {inner}
                         </a>
                       ) : (
