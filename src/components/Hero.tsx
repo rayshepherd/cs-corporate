@@ -1,6 +1,7 @@
-import { chain, company, hero } from "@/content/site";
+import { hero } from "@/content/site";
 import { ResellerLink } from "./ResellerLink";
 import { HeroVideo } from "./HeroVideo";
+import { SignalChain } from "./SignalChain";
 
 export function Hero() {
   return (
@@ -29,39 +30,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Signal chain: how products reach the stage */}
-        <div className="relative self-center">
-          <p className="mb-5 text-sm text-ink/75">How gear reaches the stage</p>
-          <ol className="relative pl-8">
-            <span aria-hidden="true" className="absolute bottom-6 left-[7px] top-6 w-px bg-rule">
-              <span className="signal-dot absolute -left-[4px] h-[9px] w-[9px] rounded-full bg-accent" />
-            </span>
-            {chain.map((step, i) => {
-              const isUs = step.title === company.shortName;
-              return (
-                <li key={step.title} className="relative pb-3 last:pb-0">
-                  <span
-                    aria-hidden="true"
-                    className={`absolute -left-8 top-6 h-[15px] w-[15px] rounded-full border-2 ${
-                      isUs ? "border-ink bg-ink" : "border-steel bg-paper"
-                    }`}
-                  />
-                  <div
-                    className={`border px-5 py-4 ${
-                      isUs ? "border-ink bg-ink text-paper" : "chain-node border-rule"
-                    }`}
-                    style={isUs ? undefined : { animationDelay: `${0.4 + i * 0.55}s` }}
-                  >
-                    <p className="font-semibold">{step.title}</p>
-                    <p className={`mt-1 text-[0.95rem] leading-snug ${isUs ? "text-panel-text" : "text-steel"}`}>
-                      {step.text}
-                    </p>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
+        <SignalChain />
       </div>
     </section>
   );

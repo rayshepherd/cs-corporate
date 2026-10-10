@@ -56,12 +56,16 @@ export const hero = {
   } as { mp4: string; webm: string; poster: string; opacity?: number; grain?: number },
 };
 
-/** The signal chain in the hero: what a distributor does, in order. */
-export const chain = [
-  { title: "Manufacturers", text: "International brands appoint us to represent them." },
-  { title: "Concepts & Standards", text: "We import, stock, price and provide warranty." },
-  { title: "Resellers", text: "Stores, installers and studios buy from us." },
-  { title: "Stage and studio", text: "DJs, producers and musicians use the gear." },
+/**
+ * The signal chain in the hero: what a distributor does, in order.
+ * icon: globe | box | shop | speaker. The step with `us: true` shows the company logo instead of its title.
+ */
+export const chainTitle = "How gear reaches the stage";
+export const chain: { title: string; text: string; icon: "globe" | "box" | "shop" | "speaker"; us?: boolean }[] = [
+  { title: "Manufacturers", text: "International brands appoint us to represent them.", icon: "globe" },
+  { title: "Concepts & Standards", text: "We import, stock, price and provide warranty.", icon: "box", us: true },
+  { title: "Resellers", text: "Stores, installers and studios buy from us.", icon: "shop" },
+  { title: "Stage and studio", text: "DJs, producers and musicians use the gear.", icon: "speaker" },
 ];
 
 export const about = {

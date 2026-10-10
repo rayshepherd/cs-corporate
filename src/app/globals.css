@@ -83,53 +83,6 @@ body {
   border-radius: 2px;
 }
 
-/* Hero signal: one pulse travelling down the chain once the page loads */
-@keyframes signal-travel {
-  0% {
-    top: 0%;
-    opacity: 0;
-  }
-  8% {
-    opacity: 1;
-  }
-  92% {
-    opacity: 1;
-  }
-  100% {
-    top: 100%;
-    opacity: 0;
-  }
-}
-
-.signal-dot {
-  animation: signal-travel 2.4s cubic-bezier(0.45, 0, 0.25, 1) 0.4s 2 both;
-}
-
-@keyframes node-lit {
-  0%,
-  100% {
-    background: var(--paper-raised);
-  }
-  30% {
-    background: var(--accent-soft);
-  }
-}
-
-.chain-node {
-  animation: node-lit 2.4s ease-out both;
-  animation-iteration-count: 2;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .signal-dot,
-  .chain-node {
-    animation: none;
-  }
-  .signal-dot {
-    display: none;
-  }
-}
-
 /* News article body (generated from Markdown) */
 .prose-cs > * + * {
   margin-top: 1.1em;
