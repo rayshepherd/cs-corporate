@@ -187,14 +187,27 @@ const brandLogos: Record<string, string> = {
   Phase: "/logos/brands/phase.svg",
   AIAIAI: "/logos/brands/aiaiai.svg",
   Glorious: "/logos/brands/glorious.svg",
+  "ADAM Audio": "/logos/brands/adam-audio.svg",
+  "KRK Systems": "/logos/brands/krk.svg",
+  Kanto: "/logos/brands/kanto.svg",
+  Focusrite: "/logos/brands/focusrite.svg",
+  Sontronics: "/logos/brands/sontronics.svg",
+  Sonarworks: "/logos/brands/sonarworks.svg",
+  "Monkey Banana": "/logos/brands/monkey-banana.svg",
 };
-const brandScale: Record<string, number> = {};
+const brandScale: Record<string, number> = { "Monkey Banana": 1.15, Sontronics: 1.1 };
 const brandUrls: Record<string, string> = {
   Reloop: "https://www.reloop.com",
   Hercules: "https://www.hercules.com",
-  Phase: "https://phase.dj",
+  Phase: "https://www.phasedj.com",
   AIAIAI: "https://aiaiai.audio",
   Glorious: "https://www.glorious.de",
+  "ADAM Audio": "https://www.adam-audio.com",
+  "KRK Systems": "https://www.krkmusic.com",
+  Kanto: "https://www.kantoaudio.com",
+  Focusrite: "https://focusrite.com",
+  Sontronics: "https://www.sontronics.com",
+  Sonarworks: "https://www.sonarworks.com",
 };
 const b = (name: string) => ({
   name,

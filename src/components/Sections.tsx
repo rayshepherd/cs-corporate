@@ -233,11 +233,12 @@ export function Brands() {
           {distributedBrands.categories.map((cat) => (
             <div key={cat.name} className="grid gap-5 md:grid-cols-[220px_1fr] md:gap-10">
               <h3 className="border-t border-ink pt-3 font-semibold">{cat.name}</h3>
-              <ul className="grid grid-cols-2 gap-x-8 sm:grid-cols-3 lg:grid-cols-4">
+              {/* Logos flow in rows with the same gap between every pair, whatever each logo's width */}
+              <ul className="flex flex-wrap items-center gap-x-12 gap-y-6 md:gap-x-16">
                 {cat.brands.map((b) => {
                   const inner = <BrandMark name={b.name} logo={b.logo} scale={b.scale} />;
                   return (
-                    <li key={b.name} className="flex h-24 items-center">
+                    <li key={b.name} className="flex h-20 items-center">
                       {b.url ? (
                         <a
                           href={b.url}
