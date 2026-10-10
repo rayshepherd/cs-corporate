@@ -176,10 +176,26 @@ export const ownBrands = {
 
 /**
  * Brands we distribute, grouped by category.
- * For each brand add the logo file to /public/logos/brands/ and set `logo`, e.g. "/logos/brands/gibson.svg".
- * Leave `logo` empty to show the brand name as text. `url` (optional) links to the brand's website.
+ * Logos: put the file (black SVG, or black PNG with transparency) in /public/logos/brands/ and list it
+ * in `brandLogos` below. A brand without a logo shows its name as text.
+ * `brandScale` (optional) makes one logo a little bigger or smaller than the rest, e.g. 1.1 or 0.9.
+ * `brandUrls` (optional) links a logo to the brand's website.
  */
-const b = (name: string) => ({ name, logo: "", url: "" });
+const brandLogos: Record<string, string> = {
+  Reloop: "/logos/brands/reloop.svg",
+  Hercules: "/logos/brands/hercules.svg",
+  Phase: "/logos/brands/phase.svg",
+  AIAIAI: "/logos/brands/aiaiai.svg",
+  Glorious: "/logos/brands/glorious.svg",
+};
+const brandScale: Record<string, number> = { AIAIAI: 0.85 };
+const brandUrls: Record<string, string> = {};
+const b = (name: string) => ({
+  name,
+  logo: brandLogos[name] ?? "",
+  url: brandUrls[name] ?? "",
+  scale: brandScale[name] ?? 1,
+});
 export const distributedBrands = {
   heading: "Brands we distribute",
   intro: "We hold exclusive distribution rights for every brand below. Resellers order all of them from our local stock.",

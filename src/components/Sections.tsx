@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { about, distributedBrands, journey, ownBrands, resellers, service } from "@/content/site";
+import { logoSize } from "@/lib/logo-size";
 import { ResellerLink } from "./ResellerLink";
 import { SignalChain } from "./SignalChain";
 
@@ -172,7 +173,42 @@ function Group() {
   );
 }
 
-function BrandMark({ name, logo, size = "md" }: { name: string; logo: string; size?: "md" | "lg" }) {
+/**
+ * Brand logos in the distribution grid are sized by area rather than by height, so a long thin
+ * wordmark and a compact badge carry the same visual weight. `scale` nudges a single logo.
+ */
+const LOGO_AREA = 4200; // px² each logo covers
+const LOGO_MAX_W = 160;
+const LOGO_MAX_H = 52;
+
+function BrandMark({
+  name,
+  logo,
+  size = "md",
+  scale = 1,
+}: {
+  name: string;
+  logo: string;
+  size?: "md" | "lg";
+  scale?: number;
+}) {
+  if (logo && size === "md") {
+    const { w, h } = logoSize(logo);
+    const ratio = w / h;
+    let height = Math.sqrt(LOGO_AREA / ratio);
+    height = Math.min(height, LOGO_MAX_H, LOGO_MAX_W / ratio) * scale;
+    const width = height * ratio;
+    return (
+      <Image
+        src={logo}
+        alt={name}
+        width={Math.round(width)}
+        height={Math.round(height)}
+        style={{ width: Math.round(width), height: Math.round(height) }}
+        className="max-w-full object-contain"
+      />
+    );
+  }
   if (logo) {
     return (
       <Image
@@ -199,7 +235,7 @@ export function Brands() {
               <h3 className="border-t border-ink pt-3 font-semibold">{cat.name}</h3>
               <ul className="grid grid-cols-2 border-l border-t border-rule sm:grid-cols-3 lg:grid-cols-4">
                 {cat.brands.map((b) => {
-                  const inner = <BrandMark name={b.name} logo={b.logo} />;
+                  const inner = <BrandMark name={b.name} logo={b.logo} scale={b.scale} />;
                   return (
                     <li key={b.name} className="flex h-28 items-center justify-center border-b border-r border-rule bg-paper-raised px-4 text-center">
                       {b.url ? (
