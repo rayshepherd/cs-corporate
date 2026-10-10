@@ -5,6 +5,7 @@ import { NewsList } from "@/components/NewsList";
 export const metadata: Metadata = {
   title: "News",
   description: "Announcements from Concepts & Standards: new brands, products and company news.",
+  alternates: { canonical: "/news" },
 };
 
 export default async function NewsPage() {

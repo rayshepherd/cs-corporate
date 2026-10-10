@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: PageProps<"/news/[slug]">): P
   return {
     title: post.title,
     description: post.summary,
+    alternates: { canonical: `/news/${post.slug}` },
     openGraph: { title: post.title, description: post.summary, type: "article", publishedTime: post.date },
   };
 }

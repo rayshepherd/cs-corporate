@@ -4,11 +4,10 @@ import "./globals.css";
 import { company, hero } from "@/content/site";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.conceptsandstandards.com";
+import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${company.shortName} | ${company.tradingAs}`,
     template: `%s | ${company.shortName}`,
