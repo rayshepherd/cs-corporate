@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { about, distributedBrands, ownBrands, resellers } from "@/content/site";
 import { ResellerLink } from "./ResellerLink";
+import { SignalChain } from "./SignalChain";
 
 function SectionHeading({ title, intro }: { title: string; intro?: string }) {
   return (
@@ -30,6 +31,9 @@ export function About() {
               </div>
             ))}
           </dl>
+        </div>
+        <div className="mt-20 md:mt-28">
+          <SignalChain />
         </div>
       </div>
     </section>

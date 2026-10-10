@@ -38,10 +38,11 @@ export function SignalChain() {
   const list = useRef<HTMLOListElement>(null);
   const cable = useRef<SVGPathElement>(null);
   const pulse = useRef<SVGCircleElement>(null);
+  const jacks = useRef<SVGGElement>(null);
 
   useEffect(() => {
-    const box = wrap.current, ol = list.current, path = cable.current, dot = pulse.current;
-    if (!box || !ol || !path || !dot) return;
+    const box = wrap.current, ol = list.current, path = cable.current, dot = pulse.current, sockets = jacks.current;
+    if (!box || !ol || !path || !dot || !sockets) return;
     const items = Array.from(ol.children) as HTMLElement[];
     let pts: [number, number][] = [];
 
@@ -51,22 +52,32 @@ export function SignalChain() {
       dot.setAttribute("cy", String(p.y));
     };
 
-    // Draw the cable through a "jack" just left of each step, with a gentle sway between steps
+    // Draw the cable through a "jack" for each step: above the boxes when they sit in a row,
+    // to their left when they stack (phones). A gentle sway between jacks, like a loose cable.
     const layout = () => {
       const b = box.getBoundingClientRect();
-      pts = items.map((li) => {
-        const r = li.getBoundingClientRect();
-        return [r.left - b.left - 20, r.top - b.top + r.height / 2];
-      });
+      const rects = items.map((li) => li.getBoundingClientRect());
+      const row = rects.length > 1 && Math.abs(rects[1].top - rects[0].top) < 4;
+      pts = rects.map((r) =>
+        row ? [r.left - b.left + r.width / 2, r.top - b.top - 18] : [r.left - b.left - 20, r.top - b.top + r.height / 2],
+      );
       let d = `M${pts[0][0]} ${pts[0][1]}`;
       for (let k = 1; k < pts.length; k++) {
         const [x0, y0] = pts[k - 1];
         const [x1, y1] = pts[k];
-        const sway = k % 2 ? -14 : 14;
-        const my = (y0 + y1) / 2;
-        d += ` C ${x0 + sway} ${my}, ${x1 + sway} ${my}, ${x1} ${y1}`;
+        const sway = k % 2 ? -12 : 12;
+        if (row) {
+          const mx = (x0 + x1) / 2;
+          d += ` C ${mx} ${y0 + sway}, ${mx} ${y1 + sway}, ${x1} ${y1}`;
+        } else {
+          const my = (y0 + y1) / 2;
+          d += ` C ${x0 + sway} ${my}, ${x1 + sway} ${my}, ${x1} ${y1}`;
+        }
       }
       path.setAttribute("d", d);
+      sockets.innerHTML = pts
+        .map(([x, y]) => `<circle cx="${x}" cy="${y}" r="4" fill="var(--paper)" stroke="currentColor" stroke-width="1.5"/>`)
+        .join("");
       dot.style.opacity = "1";
     };
     layout();
@@ -110,39 +121,43 @@ export function SignalChain() {
   }, [usIndex]);
 
   return (
-    <div className="self-center">
-      <h2 className="mb-6 border border-ink bg-paper px-5 py-3 text-center text-[1.05rem] font-medium tracking-[-0.01em]">
+    <div>
+      <h3 className="mx-auto mb-8 w-fit border border-ink bg-paper px-8 py-3 text-center text-[1.1rem] font-medium tracking-[-0.01em]">
         {chainTitle}
-      </h2>
+      </h3>
       <div ref={wrap} className="relative">
         <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full overflow-visible">
           <path ref={cable} fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 5" opacity="0.55" />
+          <g ref={jacks} />
           <circle ref={pulse} r="5" fill="currentColor" style={{ opacity: 0 }} />
         </svg>
-        <ol ref={list} className="grid gap-3 pl-[52px]">
+        <ol ref={list} className="grid gap-3 pl-[52px] md:grid-cols-4 md:gap-4 md:pl-0 md:pt-[38px]">
           {chain.map((step, i) => {
             const on = i === active;
             return (
               <li
                 key={step.title}
-                className={`relative border py-3 pl-[54px] pr-4 transition-colors duration-300 ${
+                className={`relative border py-3 pl-[54px] pr-4 transition-colors duration-300 md:p-5 ${
                   on ? "border-ink bg-ink text-paper" : "border-rule bg-paper text-ink"
                 } ${step.us && !on ? "ring-2 ring-inset ring-ink" : ""}`}
               >
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 30 30"
-                  className="absolute left-[14px] top-[14px] h-[28px] w-[28px] fill-none stroke-current [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:1.5]"
+                  className="absolute left-[14px] top-[14px] h-[28px] w-[28px] fill-none stroke-current [stroke-linecap:round] [stroke-linejoin:round] [stroke-width:1.5] md:static md:mb-4"
                 >
                   {icons[step.icon]}
                 </svg>
-                {step.us ? (
-                  <LogoMark className="h-[30px] w-auto" title={step.title} />
-                ) : (
-                  <p className="font-semibold">{step.title}</p>
-                )}
+                {/* Same row height for the logo and the titles, so every box lines up */}
+                <div className="flex min-h-[30px] items-center">
+                  {step.us ? (
+                    <LogoMark className="h-[30px] w-auto" title={step.title} />
+                  ) : (
+                    <p className="font-semibold">{step.title}</p>
+                  )}
+                </div>
                 <p
-                  className={`mt-1 text-[0.95rem] leading-snug transition-colors duration-300 ${
+                  className={`mt-1 text-[0.95rem] leading-snug transition-colors duration-300 md:mt-2 ${
                     on ? "text-panel-text" : "text-steel"
                   }`}
                 >
