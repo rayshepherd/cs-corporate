@@ -13,11 +13,11 @@ function SectionHeading({ title, intro }: { title: string; intro?: string }) {
 }
 
 /** Heading for a part of a longer section (About is told in several parts). */
-function PartHeading({ title, intro }: { title: string; intro?: string }) {
+function PartHeading({ title, intro, wide }: { title: string; intro?: string; wide?: boolean }) {
   return (
     <div className="mb-10 md:mb-12">
       <h3 className="display text-[1.6rem] md:text-[2rem]">{title}</h3>
-      {intro && <p className="measure mt-3 text-steel">{intro}</p>}
+      {intro && <p className={`${wide ? "" : "measure "}mt-3 text-pretty text-steel`}>{intro}</p>}
     </div>
   );
 }
@@ -144,14 +144,15 @@ function Service() {
 function Group() {
   return (
     <div>
-      <PartHeading title={ownBrands.heading} intro={ownBrands.intro} />
-      <ul className="grid gap-px border border-rule bg-rule md:grid-cols-2">
+      <PartHeading title={ownBrands.heading} intro={ownBrands.intro} wide />
+      {/* Frameless: logos on a shared baseline, text beneath, no boxes */}
+      <ul className="grid gap-x-14 gap-y-14 md:grid-cols-3">
         {ownBrands.items.map((b) => (
-          <li key={b.name} className="flex flex-col bg-paper-raised p-8 md:p-10">
+          <li key={b.name} className="flex flex-col">
             <div className="flex h-16 items-center">
               <BrandMark name={b.name} logo={b.logo} size="lg" />
             </div>
-            <p className="measure mt-6 text-steel">{b.text}</p>
+            <p className="mt-6 text-steel">{b.text}</p>
             {b.url && (
               <a href={b.url} className="mt-6 font-medium text-accent underline-offset-4 hover:underline">
                 Visit {b.name}

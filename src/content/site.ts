@@ -146,7 +146,8 @@ export const service = {
 /** Our own brand and group companies. */
 export const ownBrands = {
   heading: "Our group",
-  intro: "Concepts & Standards trades as DJ Lab in Lebanon and works alongside its sister company in the UAE.",
+  // The non-breaking spaces ( ) keep "in the UAE." together on one line, even on phones
+  intro: "Concepts & Standards trades as DJ Lab in Lebanon and works alongside its sister company in the UAE.",
   items: [
     {
       name: "DJ Lab",
@@ -162,6 +163,13 @@ export const ownBrands = {
       logo: "/logos/own/triangle-square.svg",
       text:
         "Our sister company in Dubai, founded in 2020. A regional distributor with its own operations in mainland UAE.",
+      url: "",
+    },
+    {
+      name: "MPFreaks",
+      logo: "/logos/own/mpfreaks.png",
+      // TODO: confirm the description, and add the website address to `url`
+      text: "Our online retail business in the UAE, bringing music gear to customers across the Emirates.",
       url: "",
     },
   ],
