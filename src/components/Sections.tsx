@@ -23,7 +23,7 @@ function PartHeading({ title, intro }: { title: string; intro?: string }) {
 }
 
 /**
- * About is one continuous story: who we are, how we got here, how we work, how we look after
+ * About is one continuous story: who we are, how we work, how we got here, how we look after
  * products, and the companies behind it.
  */
 export function About() {
@@ -49,11 +49,11 @@ export function About() {
         </div>
 
         <div className="mt-24 md:mt-32">
-          <Journey />
+          <SignalChain />
         </div>
 
         <div className="mt-24 md:mt-32">
-          <SignalChain />
+          <Journey />
         </div>
 
         <div className="mt-24 md:mt-32">
@@ -88,14 +88,14 @@ function Journey() {
                 <p className="mt-2 text-steel">{m.text}</p>
               </div>
               {hasFrame && (
-                <div className="relative aspect-[4/3] w-full overflow-hidden border border-rule bg-[#f4f4f4]">
+                <div className="group relative aspect-[4/3] w-full overflow-hidden border border-rule bg-[#f4f4f4]">
                   {m.photo ? (
                     <Image
                       src={m.photo}
                       alt={m.photoAlt}
                       fill
                       sizes="(min-width: 768px) 400px, 100vw"
-                      className="object-cover grayscale"
+                      className="object-cover grayscale transition-[filter] duration-500 group-hover:grayscale-0"
                     />
                   ) : (
                     <span className="absolute inset-0 grid place-items-center text-sm text-steel">Photo to come</span>

@@ -73,11 +73,12 @@ export const about = {
   paragraphs: [
     "Concepts & Standards S.A.R.L. holds exclusive distribution rights for 37 of the world’s most respected music " +
       "brands, spanning DJ and studio equipment, synthesizers and keys, guitars and amplification, and drums and percussion.",
-    "We act as each brand’s partner on the ground. We import and hold stock, set local pricing, support a network of " +
-      "resellers across the country, and look after every product long after it is sold.",
+    "We act as each brand’s partner on the ground in order to help them reach new markets in which we strive. " +
+      "We import and hold stock, set local pricing, support a network of resellers across the country, and look " +
+      "after every product long after it is sold.",
   ],
   facts: [
-    { label: "Founded", value: "2015, Kaslik" },
+    { label: "Founded", value: "2015" },
     { label: "Exclusive brands", value: "37" },
     { label: "Offices", value: "Kaslik, Lebanon and Dubai, UAE" },
     { label: "After-sales", value: "Local repair and original parts" },
@@ -87,7 +88,8 @@ export const about = {
 /**
  * Our journey: milestones in date order.
  * photo: put the image in /public/media/journey/ and set the path, e.g. "/media/journey/old-kaslik.jpg".
- * Photos are shown in black and white to match the site. Leave photo empty to show a placeholder frame.
+ * Photos are shown in black and white to match the site (full colour on hover). Leave photo empty to show a
+ * placeholder frame; leave photo and photoAlt both empty for a milestone without a picture.
  */
 export const journey = {
   heading: "Our journey",
@@ -96,36 +98,36 @@ export const journey = {
       year: "2015",
       title: "Where it started",
       text: "A DJ gear store in Kaslik, built around advice, stock and after-sales service for DJs and producers.",
-      photo: "", // TODO: old Kaslik premises
-      photoAlt: "The original Concepts & Standards store in Kaslik",
+      photo: "/media/journey/dj-store-2015.jpg",
+      photoAlt: "The original Concepts & Standards DJ store in Kaslik, 2015",
     },
     {
-      year: "20XX", // TODO: year the Beirut showroom opened
+      year: "2018",
       title: "A showroom in Beirut",
       text: "Our Beirut showroom brought the brands closer to the city’s artists, studios and venues.",
-      photo: "", // TODO: Beirut showroom
-      photoAlt: "The Concepts & Standards showroom in Beirut",
+      photo: "/media/journey/beirut-showroom-2018.jpg",
+      photoAlt: "The Concepts & Standards showroom in Beirut, 2018",
     },
     {
       year: "2020",
       title: "Triangle Square, Dubai",
       text: "Our sister company opened in Dubai as a regional distributor, with its own operations in mainland UAE.",
-      photo: "",
-      photoAlt: "",
+      photo: "/media/journey/triangle-square-2020.jpg",
+      photoAlt: "The Triangle Square Trading premises in Dubai",
     },
     {
       year: "2024",
       title: "Musical instruments",
       text: "Guitars, keys, drums and percussion joined our DJ and studio lines, from Gibson and Nord to DW and LP.",
-      photo: "",
-      photoAlt: "",
+      photo: "/media/journey/musical-instruments-2024.jpg",
+      photoAlt: "The musical instruments space, with guitars on display",
     },
     {
       year: "20XX", // TODO: year the new Kaslik premises opened
       title: "Our new home in Kaslik",
       text: "New premises at Harbor 682 Center, ATCL Street, bringing offices, stock and service under one roof.",
-      photo: "", // TODO: new Kaslik premises
-      photoAlt: "The Concepts & Standards premises at Harbor 682 Center, Kaslik",
+      photo: "/media/journey/kaslik-new.jpg",
+      photoAlt: "Keyboards, a drum kit and studio gear at the new Kaslik premises",
     },
   ],
 };
@@ -157,7 +159,7 @@ export const ownBrands = {
     },
     {
       name: "Triangle Square Trading LLC",
-      logo: "",
+      logo: "/logos/own/triangle-square.svg",
       text:
         "Our sister company in Dubai, founded in 2020. A regional distributor with its own operations in mainland UAE.",
       url: "",
