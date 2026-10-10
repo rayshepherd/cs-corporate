@@ -40,15 +40,18 @@ export const hero = {
   primaryCta: "Become a reseller",
   secondaryCta: "See our brands",
   /**
-   * Background loop behind the hero. Made with scripts/make-hero-video.sh.
-   * Leave mp4 empty to show no video. opacity: 0 (invisible) to 1 (full strength).
+   * Background loop behind the hero.
+   * Made with: node scripts/hero-video.mjs <folder-with-clips>  (edit list in scripts/hero-video.json)
+   * Leave mp4 empty to show no video.
+   * opacity: strength of the footage, 0 (invisible) to 1 (full). grain: strength of the film grain, 0 to turn off.
    */
   video: {
-    mp4: "",
-    webm: "",
-    poster: "",
-    opacity: 0.16,
-  } as { mp4: string; webm: string; poster: string; opacity?: number },
+    mp4: "/media/hero.mp4",
+    webm: "/media/hero.webm",
+    poster: "/media/hero-poster.jpg",
+    opacity: 0.2,
+    grain: 0.22,
+  } as { mp4: string; webm: string; poster: string; opacity?: number; grain?: number },
 };
 
 /** The signal chain in the hero: what a distributor does, in order. */

@@ -1,0 +1,29 @@
+{
+  "_comment": "Hero background edit. Cuts play in this order; clip names refer to files in the source folder. start/end in seconds.",
+  "cuts": [
+    { "clip": "01", "start": 0, "end": 4 },
+    { "clip": "02", "start": 6, "end": 8 },
+    { "clip": "04", "start": 0, "end": 8 },
+    { "clip": "03", "start": 0, "end": 4 },
+    { "clip": "05", "start": 5, "end": 9 },
+    { "clip": "03", "start": 7, "end": 9 },
+    { "clip": "06", "start": 0, "end": 3 },
+    { "clip": "03", "start": 11, "end": 13 },
+    { "clip": "07", "start": 0, "end": 2 },
+    { "clip": "03", "start": 18, "end": 20 },
+    { "clip": "08", "start": 0, "end": 2 },
+    { "clip": "03", "start": 24, "end": 28 },
+    { "clip": "08", "start": 13, "end": 19 }
+  ],
+  "look": {
+    "width": 960,
+    "fps": 25,
+    "contrast": 1.2,
+    "brightness": 0.02,
+    "grain": 0,
+    "denoise": 6,
+    "crf": 32,
+    "webmCrf": 48,
+    "loopFade": 0.6
+  }
+}

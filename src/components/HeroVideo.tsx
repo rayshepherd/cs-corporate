@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { hero } from "@/content/site";
 
 /**
- * Pale, pixelated black-and-white performance loop behind the hero.
+ * Pale black-and-white performance loop behind the hero, with live film grain on top.
  * - Muted, looping, no controls; starts only when the visitor hasn't asked for reduced motion
  *   (they see the still poster instead).
  * - Pauses while scrolled out of view to save battery.
@@ -37,20 +37,23 @@ export function HeroVideo() {
   if (!video?.mp4) return null;
 
   return (
-    <video
-      ref={ref}
-      aria-hidden="true"
-      tabIndex={-1}
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      poster={video.poster || undefined}
-      className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-      style={{ opacity: video.opacity ?? 0.16 }}
-    >
-      {video.webm && <source src={video.webm} type="video/webm" />}
-      <source src={video.mp4} type="video/mp4" />
-    </video>
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      <video
+        ref={ref}
+        tabIndex={-1}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={video.poster || undefined}
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ opacity: video.opacity ?? 0.16 }}
+      >
+        <source src={video.mp4} type="video/mp4" />
+        {video.webm && <source src={video.webm} type="video/webm" />}
+      </video>
+      {/* Film grain, drawn by the browser so it adds nothing to the video file */}
+      {(video.grain ?? 0.12) > 0 && <div className="film-grain" style={{ opacity: video.grain ?? 0.12 }} />}
+    </div>
   );
 }

@@ -47,17 +47,17 @@ With no email or ERPNext settings, form submissions are printed in the terminal 
 
 ## Hero background video
 
-The hero can play a pale, black-and-white, pixelated loop (a DJ clip crossfading into a band clip).
+The hero plays a pale black-and-white montage of stage footage with live film grain on top.
 
-```bash
-scripts/make-hero-video.sh dj.mp4 band.mp4 [dj_start] [band_start] [seconds_each]
-# e.g. take 6 s of each, starting 12 s into the DJ clip and 30 s into the band clip:
-scripts/make-hero-video.sh dj.mp4 band.mp4 12 30 6
-```
+1. Put the source clips in one folder, named as in the edit list (`01.mp4`, `02.mp4`, …).
+2. Edit `scripts/hero-video.json`: the cuts in playing order (clip, start and end in seconds) and
+   the look (contrast, brightness, size, compression).
+3. Run `node scripts/hero-video.mjs /path/to/clips` (needs ffmpeg). It writes
+   `public/media/hero.mp4`, `hero.webm` and `hero-poster.jpg`.
 
-It writes `public/media/hero.mp4`, `hero.webm` and `hero-poster.jpg`. Then set `hero.video` in
-`src/content/site.ts`. Adjust `opacity` there; tune pixel size and grey tones with
-`BLOCK=8 LEVELS=6` before the command. Visitors who ask for reduced motion see the still poster.
+Strength of the footage and of the grain: `hero.video.opacity` and `hero.video.grain` in
+`src/content/site.ts`. Visitors who ask for reduced motion see the still poster and static grain.
+Source clips are not stored in the repo.
 
 ## What the form does
 
