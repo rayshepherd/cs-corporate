@@ -50,7 +50,7 @@ export const hero = {
     webm: "/media/hero.webm",
     poster: "/media/hero-poster.jpg",
     opacity: 0.2,
-    grain: 0.22,
+    grain: 0.28,
   } as { mp4: string; webm: string; poster: string; opacity?: number; grain?: number },
 };
 

@@ -169,14 +169,14 @@ body {
   color: var(--steel);
 }
 
-/* Film grain over the hero video. An oversized noise layer jumps to a new position
-   several times a second; transform-only, so it stays cheap to animate. */
+/* Film grain over the hero video: a small transparent noise tile on an oversized layer that
+   jumps to a new position several times a second. Transform-only and no blend mode, so it
+   stays cheap to draw. */
 .film-grain {
   position: absolute;
   inset: -50%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='3.2' intercept='-1.1'/%3E%3CfeFuncG type='linear' slope='3.2' intercept='-1.1'/%3E%3CfeFuncB type='linear' slope='3.2' intercept='-1.1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 220px 220px;
-  mix-blend-mode: multiply;
+  background-image: url("/media/grain.png");
+  background-size: 180px 180px;
   will-change: transform;
   animation: grain-shift 0.8s steps(8) infinite;
 }
