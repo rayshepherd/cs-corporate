@@ -21,13 +21,13 @@ export const company = {
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Harbor+682+Center+ATCL+Street+Kaslik+Lebanon",
   },
   phone: "+961 70 567 149",
-  whatsapp: "", // TODO: set to "96170567149" if this number is on WhatsApp
+  whatsapp: "96170567149", // international format, digits only
   email: "info@conceptsandstandards.com",
-  hours: "", // TODO: e.g. "Monday to Friday, 9:00 to 18:00" (hidden while empty)
+  // Each entry is its own line on the page. Leave empty to hide.
+  hours: ["Monday to Friday, 10:00 to 18:00", "Closed on weekends and official public holidays"],
   registration: "CR 2041133",
   social: {
-    instagram: "", // TODO
-    facebook: "", // TODO
+    // Concepts & Standards is on LinkedIn only. DJ Lab's Instagram and Facebook sit with DJ Lab under Our group.
     linkedin: "https://www.linkedin.com/company/concepts-&-standards-sarl",
   },
 };
@@ -72,7 +72,7 @@ export const about = {
   heading: "Who we are",
   paragraphs: [
     "Concepts & Standards S.A.R.L. holds exclusive distribution rights for 37 of the world’s most respected music " +
-      "brands, spanning DJ and studio equipment, synthesizers and keys, guitars and amplification, and drums and percussion.",
+      "brands. Our portfolio runs from DJ decks and studio monitors to synthesizers, guitars, amplifiers, drums and cymbals.",
     "We act as each brand’s partner on the ground in order to help them reach new markets where we thrive. " +
       "We import and hold stock, set local pricing, support a network of resellers across the country, and look " +
       "after every product long after it is sold.",
@@ -152,11 +152,15 @@ export const ownBrands = {
     {
       name: "DJ Lab",
       logo: "/logos/own/djlab.svg",
-      // TODO: confirm how you want DJ Lab described
       text:
-        "The name DJs and producers in Lebanon have known us by since 2015. DJ Lab is the trading name of " +
-        "Concepts & Standards for retail and professional customers.",
+        "The name DJs and producers in Lebanon have known us by since 2015. DJ Lab is the retail & cultural arm " +
+        "of Concepts & Standards for B2C customers.",
       url: "https://djlab-lb.com",
+      // Shown under the text; a link appears once its address is filled in
+      social: [
+        { label: "Instagram", url: "" },
+        { label: "Facebook", url: "" },
+      ],
     },
     {
       name: "Triangle Square Trading LLC",

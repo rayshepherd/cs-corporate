@@ -61,10 +61,16 @@ export function Contact() {
                 </a>
               </dd>
             </div>
-            {company.hours && (
+            {company.hours.length > 0 && (
               <div>
                 <dt className="text-sm text-steel">Opening hours</dt>
-                <dd className="mt-1">{company.hours}</dd>
+                <dd className="mt-1">
+                  {company.hours.map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
+                </dd>
               </div>
             )}
           </dl>

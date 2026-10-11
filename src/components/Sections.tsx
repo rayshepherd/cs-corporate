@@ -2,6 +2,7 @@ import Image from "next/image";
 import { about, distributedBrands, journey, ownBrands, resellers, service } from "@/content/site";
 import { logoSize } from "@/lib/logo-size";
 import { ResellerLink } from "./ResellerLink";
+import { CenterInColor } from "./CenterInColor";
 import { SignalChain } from "./SignalChain";
 
 function SectionHeading({ title, intro }: { title: string; intro?: string }) {
@@ -73,6 +74,7 @@ function Journey() {
   return (
     <div>
       <PartHeading title={journey.heading} />
+      <CenterInColor>
       <ol className="space-y-6 md:space-y-8">
         {journey.milestones.map((m, i) => {
           const right = i % 2 === 1; // alternate corners: left, right, left…
@@ -92,13 +94,13 @@ function Journey() {
           }
           return (
             <li key={`${m.year}-${m.title}`}>
-              <figure className="group relative aspect-[4/3] overflow-hidden bg-ink md:aspect-[16/9]">
+              <figure data-center-color className="group relative aspect-[4/3] overflow-hidden bg-ink md:aspect-[16/9]">
                 <Image
                   src={m.photo}
                   alt={m.photoAlt}
                   fill
                   sizes="(min-width: 1180px) 1116px, 100vw"
-                  className="object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0"
+                  className="object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0 group-data-[active=true]:grayscale-0"
                 />
                 {/* Fade behind the text so white type stays readable on bright photos */}
                 <div
@@ -122,6 +124,7 @@ function Journey() {
           );
         })}
       </ol>
+      </CenterInColor>
     </div>
   );
 }
@@ -166,6 +169,24 @@ function Group() {
               )}
             </div>
             <p className="mt-6 text-steel">{b.text}</p>
+            {"social" in b && b.social && b.social.some((x) => x.url) && (
+              <ul className="mt-4 flex gap-5 text-sm">
+                {b.social
+                  .filter((x) => x.url)
+                  .map((x) => (
+                    <li key={x.label}>
+                      <a
+                        href={x.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium underline-offset-4 hover:underline"
+                      >
+                        {x.label}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            )}
           </li>
         ))}
       </ul>
