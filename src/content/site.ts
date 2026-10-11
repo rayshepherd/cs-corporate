@@ -177,7 +177,9 @@ export const ownBrands = {
 /**
  * Brands we distribute, grouped by category.
  * Logos: put the file (black SVG, or black PNG with transparency) in /public/logos/brands/ and list it
- * in `brandLogos` below. A brand without a logo shows its name as text.
+ * in `brandLogos` below.
+ * Rule: only the colour changes (to black). Never change a logo's composition — no removing badges,
+ * outlines, symbols or marks. Use another official version of the logo only if the brand publishes one. A brand without a logo shows its name as text.
  * `brandScale` (optional) makes one logo a little bigger or smaller than the rest, e.g. 1.1 or 0.9.
  * `brandUrls` (optional) links a logo to the brand's website.
  */
