@@ -1,0 +1,22 @@
+{
+  "legalName": "Concepts & Standards SARL",
+  "shortName": "Concepts & Standards",
+  "tradingAs": "DJ Lab",
+  "tagline": "Distributor of DJ, studio and musical instrument brands in Lebanon since 2015.",
+  "founded": "2015",
+  "address": {
+    "line1": "Harbor 682 Center, ATCL Street",
+    "city": "Kaslik",
+    "country": "Lebanon",
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Harbor+682+Center+ATCL+Street+Kaslik+Lebanon"
+  },
+  "phone": "+961 70 567 149",
+  "whatsapp": "96170567149",
+  "email": "info@conceptsandstandards.com",
+  "hours": [
+    "Monday to Friday, 10:00 to 18:00",
+    "Closed on weekends and official public holidays"
+  ],
+  "registration": "CR 2041133",
+  "linkedin": "https://www.linkedin.com/company/concepts-&-standards-sarl"
+}

@@ -1,0 +1,73 @@
+{
+  "heading": "Brands we distribute",
+  "intro": "We hold exclusive distribution rights for every brand below. Resellers order all of them from our local stock.",
+  "categories": [
+    {
+      "name": "DJ",
+      "brands": [
+        "reloop",
+        "hercules",
+        "phase",
+        "aiaiai",
+        "glorious"
+      ]
+    },
+    {
+      "name": "Studio and recording",
+      "brands": [
+        "adam-audio",
+        "krk-systems",
+        "kanto",
+        "focusrite",
+        "sontronics",
+        "sonarworks",
+        "monkey-banana"
+      ]
+    },
+    {
+      "name": "Synthesizers and keys",
+      "brands": [
+        "novation",
+        "arturia",
+        "sequential",
+        "teenage-engineering",
+        "nord",
+        "gewa-keys"
+      ]
+    },
+    {
+      "name": "Guitars, bass and amplification",
+      "brands": [
+        "gibson",
+        "epiphone",
+        "solar-guitars",
+        "s-by-solar",
+        "orange",
+        "ebs",
+        "strymon",
+        "palmer",
+        "ghs-strings"
+      ]
+    },
+    {
+      "name": "Drums and percussion",
+      "brands": [
+        "dw",
+        "pdp",
+        "premier-percussion",
+        "lp",
+        "vater-percussion",
+        "bosphorus-cymbals",
+        "schlagwerk"
+      ]
+    },
+    {
+      "name": "Stands, cables and accessories",
+      "brands": [
+        "gravity",
+        "adam-hall-cables",
+        "earproof"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { about, distributedBrands, journey, ownBrands, resellers, service } from "@/content/site";
+import { getBrandCategories, getGroupCompanies, getMilestones } from "@/lib/content";
 import { logoSize } from "@/lib/logo-size";
 import { ResellerLink } from "./ResellerLink";
 import { CenterInColor } from "./CenterInColor";
@@ -70,13 +71,14 @@ export function About() {
   );
 }
 
-function Journey() {
+async function Journey() {
+  const milestones = await getMilestones();
   return (
     <div>
       <PartHeading title={journey.heading} />
       <CenterInColor>
       <ol className="space-y-6 md:space-y-8">
-        {journey.milestones.map((m, i) => {
+        {milestones.map((m, i) => {
           const right = i % 2 === 1; // alternate corners: left, right, left…
           const words = (
             <>
@@ -145,13 +147,14 @@ function Service() {
   );
 }
 
-function Group() {
+async function Group() {
+  const companies = await getGroupCompanies();
   return (
     <div>
       <PartHeading title={ownBrands.heading} intro={ownBrands.intro} wide />
       {/* Frameless: logos on a shared baseline, text beneath, no boxes */}
       <ul className="grid gap-x-14 gap-y-14 md:grid-cols-3">
-        {ownBrands.items.map((b) => (
+        {companies.map((b) => (
           <li key={b.name} className="flex flex-col">
             <div className="flex h-16 items-center">
               {b.url ? (
@@ -162,14 +165,14 @@ function Group() {
                   aria-label={`${b.name} website (opens in a new tab)`}
                   className="transition-opacity hover:opacity-60"
                 >
-                  <BrandMark name={b.name} logo={b.logo} size="lg" />
+                  <BrandMark name={b.name} logo={b.logo ?? ""} size="lg" />
                 </a>
               ) : (
-                <BrandMark name={b.name} logo={b.logo} size="lg" />
+                <BrandMark name={b.name} logo={b.logo ?? ""} size="lg" />
               )}
             </div>
             <p className="mt-6 text-steel">{b.text}</p>
-            {"social" in b && b.social && b.social.some((x) => x.url) && (
+            {b.social.some((x) => x.url) && (
               <ul className="mt-4 flex gap-5 text-sm">
                 {b.social
                   .filter((x) => x.url)
@@ -247,20 +250,21 @@ function BrandMark({
   return <span className={`display ${size === "lg" ? "text-2xl" : "text-lg"}`}>{name}</span>;
 }
 
-export function Brands() {
+export async function Brands() {
+  const categories = await getBrandCategories();
   return (
     <section id="brands" className="border-b border-rule">
       {/* Brands we distribute */}
       <div className="mx-auto max-w-[1180px] px-5 py-20 md:px-8 md:py-28">
         <SectionHeading title={distributedBrands.heading} intro={distributedBrands.intro} />
         <div className="space-y-12">
-          {distributedBrands.categories.map((cat) => (
+          {categories.map((cat) => (
             <div key={cat.name} className="grid gap-5 md:grid-cols-[220px_1fr] md:gap-10">
               <h3 className="border-t border-ink pt-3 font-semibold">{cat.name}</h3>
               {/* Logos flow in rows with the same gap between every pair, whatever each logo's width */}
               <ul className="flex flex-wrap items-center gap-x-12 gap-y-6 md:gap-x-16">
                 {cat.brands.map((b) => {
-                  const inner = <BrandMark name={b.name} logo={b.logo} scale={b.scale} boxed={b.boxed} />;
+                  const inner = <BrandMark name={b.name} logo={b.logo ?? ""} scale={b.scale ?? 1} boxed={b.boxed} />;
                   return (
                     <li key={b.name} className="flex h-20 items-center">
                       {b.url ? (

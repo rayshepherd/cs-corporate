@@ -7,11 +7,16 @@ Built with Next.js 16 (Node.js) and Tailwind CSS 4, hosted on Vercel.
 
 | What | File |
 | --- | --- |
-| All text, contact details, brands | `src/content/site.ts` |
-| News posts | `content/news/*.md` (one Markdown file per post) |
+| Content editor (log in and edit) | `/keystatic` on the live site; set up in `keystatic.config.ts` |
+| Page texts, contact details, brand categories | `content/site/*.json` (edited in the content editor) |
+| Brands (logo, link, size) | `content/brands/*.json`, logos in `public/logos/brands/<brand>/` |
+| Journey milestones | `content/journey/*.json`, photos in `public/media/journey/<milestone>/` |
+| Group companies | `content/group/*.json`, logos in `public/logos/own/<company>/` |
+| News posts | `content/news/*.md`, photos in `public/media/news/` |
+| How the content is loaded | `src/content/site.ts` (page texts) and `src/lib/content.ts`, `src/lib/news.ts` |
 | Colours (white #FFFFFF, black #000000, grey rules) | top of `src/app/globals.css` (`:root` block) |
 | Typeface | DM Sans, self-hosted — the typeface of the C&S logo |
-| Logos | `public/logos/` (paths set in `site.ts`); favicon is `src/app/icon.svg` |
+| Company logo, favicon | `public/logos/cs-logo*.svg`, `src/app/icon.svg` |
 | Contact / reseller form (browser) | `src/components/ContactForm.tsx` |
 | Form backend | `src/app/api/contact/route.ts` |
 | Email sending | `src/lib/mail.ts` |
@@ -22,28 +27,25 @@ Built with Next.js 16 (Node.js) and Tailwind CSS 4, hosted on Vercel.
 ```bash
 npm install
 cp .env.example .env.local   # fill in values, or leave empty to just log submissions
-npm run dev                  # http://localhost:3000
+npm run dev                  # http://localhost:3000, editor at http://localhost:3000/keystatic
 ```
 
 With no email or ERPNext settings, form submissions are printed in the terminal (development only).
+Locally, the content editor writes straight to the files in this folder.
 
-## Publishing news
+## Editing content and publishing news
 
-1. On GitHub, open `content/news/` and choose **Add file → Create new file**.
-2. Name it after the address you want, e.g. `new-showroom.md` becomes `/news/new-showroom`.
-3. Start it with this header, then write the post below it in Markdown:
+Go to **www.conceptsandstandards.com/keystatic** and sign in (Keystatic Cloud account, invited by an
+admin). Every Save is committed to GitHub and Vercel republishes the site in about 1–2 minutes.
 
-   ```
-   ---
-   title: Our new showroom is open
-   date: 2026-11-02
-   summary: One or two sentences shown in the news list.
-   draft: false
-   ---
-   ```
-
-4. Commit. Vercel rebuilds and the post is live in about a minute.
-   Posts with `draft: true` stay off the site.
+- **News posts → Add**: title, date, summary, optional cover photo, then write the article.
+  Untick **Draft** to publish; ticked posts stay off the site.
+- **Brands**: one entry per brand (logo, website, size). The order and grouping on the page are set in
+  **Brands we distribute: categories**. Logos: black on transparent, SVG preferred, and never change a
+  logo's composition — only its colour.
+- **Our journey: milestones** and **Our group: companies**: one entry each, with their photo or logo.
+- Everything else (headings, texts, contact details, opening hours) is under **Home page**,
+  **Resellers & contact**.
 
 ## Hero background video
 

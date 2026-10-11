@@ -1,0 +1,17 @@
+{
+  "name": "DJ Lab",
+  "order": 1,
+  "logo": "/logos/own/dj-lab/logo.svg",
+  "text": "The name DJs and producers in Lebanon have known us by since 2015. DJ Lab is the retail & cultural arm of Concepts & Standards for B2C customers.",
+  "url": "https://djlab-lb.com",
+  "social": [
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/djlab.beirut"
+    },
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/djlab.xyz"
+    }
+  ]
+}

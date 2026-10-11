@@ -1,0 +1,29 @@
+{
+  "title": "How gear reaches the stage",
+  "steps": [
+    {
+      "title": "Manufacturers",
+      "text": "International brands appoint us to represent them.",
+      "icon": "globe",
+      "us": false
+    },
+    {
+      "title": "Concepts & Standards",
+      "text": "We import, stock, price and provide warranty.",
+      "icon": "box",
+      "us": true
+    },
+    {
+      "title": "Resellers",
+      "text": "Stores, installers and studios buy from us.",
+      "icon": "shop",
+      "us": false
+    },
+    {
+      "title": "Stage and studio",
+      "text": "DJs, producers and musicians use the gear.",
+      "icon": "speaker",
+      "us": false
+    }
+  ]
+}
