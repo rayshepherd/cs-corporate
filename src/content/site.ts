@@ -218,6 +218,9 @@ const brandLogos: Record<string, string> = {
   "Vater Percussion": "/logos/brands/vater-percussion.svg",
   "Bosphorus Cymbals": "/logos/brands/bosphorus-cymbals.svg",
   Schlagwerk: "/logos/brands/schlagwerk.svg",
+  Gravity: "/logos/brands/gravity.svg",
+  "Adam Hall Cables": "/logos/brands/adam-hall-cables.svg",
+  Earproof: "/logos/brands/earproof.svg",
 };
 const brandScale: Record<string, number> = { "Monkey Banana": 1.15, Sontronics: 1.1 };
 /** Logos that are a solid square or rectangle (a badge). They all share one fixed height. */
@@ -252,6 +255,13 @@ const brandUrls: Record<string, string> = {
   LP: "https://www.lpmusic.com",
   "Vater Percussion": "https://www.vater.com",
   "Bosphorus Cymbals": "https://www.bosphoruscymbals.com",
+  "Monkey Banana": "https://monkey-banana.de/",
+  "GEWA Keys": "https://gewakeys.com/en",
+  Palmer: "https://www.palmer-germany.com/en/",
+  Schlagwerk: "https://www.schlagwerk.com/en/",
+  Gravity: "https://www.gravitystands.com/en/",
+  "Adam Hall Cables": "https://www.adamhall.com/shop/en/brands/adam-hall-cables",
+  Earproof: "https://earproof.com/",
 };
 const b = (name: string) => ({
   name,
