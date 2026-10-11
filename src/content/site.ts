@@ -211,6 +211,13 @@ const brandLogos: Record<string, string> = {
   Strymon: "/logos/brands/strymon.svg",
   Palmer: "/logos/brands/palmer.svg",
   "GHS Strings": "/logos/brands/ghs-strings.svg",
+  DW: "/logos/brands/dw.svg",
+  PDP: "/logos/brands/pdp.svg",
+  "Premier Percussion": "/logos/brands/premier-percussion.svg",
+  LP: "/logos/brands/lp.svg",
+  "Vater Percussion": "/logos/brands/vater-percussion.svg",
+  "Bosphorus Cymbals": "/logos/brands/bosphorus-cymbals.svg",
+  Schlagwerk: "/logos/brands/schlagwerk.svg",
 };
 const brandScale: Record<string, number> = { "Monkey Banana": 1.15, Sontronics: 1.1 };
 /** Logos that are a solid square or rectangle (a badge). They all share one fixed height. */
@@ -239,6 +246,12 @@ const brandUrls: Record<string, string> = {
   EBS: "https://www.ebssweden.com",
   Strymon: "https://www.strymon.net",
   "GHS Strings": "https://www.ghsstrings.com",
+  DW: "https://www.dwdrums.com",
+  PDP: "https://www.pdpdrums.com",
+  "Premier Percussion": "https://www.premier-percussion.com",
+  LP: "https://www.lpmusic.com",
+  "Vater Percussion": "https://www.vater.com",
+  "Bosphorus Cymbals": "https://www.bosphoruscymbals.com",
 };
 const b = (name: string) => ({
   name,
