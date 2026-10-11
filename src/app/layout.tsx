@@ -6,6 +6,19 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SITE_URL } from "@/lib/site-url";
 
+/**
+ * Link preview image (WhatsApp, LinkedIn, X, iMessage). A plain file with a fixed address and no
+ * query string, kept small (WhatsApp skips large images). To change it, add a new file with a new
+ * name (e.g. share-v2.jpg) so apps that cached the old preview fetch the new one.
+ */
+const shareImage = {
+  url: "/og/share-v1.jpg",
+  width: 1200,
+  height: 630,
+  type: "image/jpeg",
+  alt: "Concepts & Standards. Beirut-based. Handpicking the world’s most reputable music brands since 2015.",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -19,9 +32,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: company.shortName,
+    images: [shareImage],
   },
-  // Share image (WhatsApp, LinkedIn, X…) comes from src/app/opengraph-image.jpg and twitter-image.jpg
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", images: [shareImage] },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
