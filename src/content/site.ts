@@ -196,8 +196,14 @@ const brandLogos: Record<string, string> = {
   Sontronics: "/logos/brands/sontronics.svg",
   Sonarworks: "/logos/brands/sonarworks.svg",
   "Monkey Banana": "/logos/brands/monkey-banana.svg",
+  Novation: "/logos/brands/novation.svg",
+  Arturia: "/logos/brands/arturia.svg",
+  Sequential: "/logos/brands/sequential.svg",
+  "Teenage Engineering": "/logos/brands/teenage-engineering.svg",
+  Nord: "/logos/brands/nord.svg",
+  "GEWA Keys": "/logos/brands/gewa-keys.svg",
 };
-const brandScale: Record<string, number> = { "Monkey Banana": 1.15, Sontronics: 1.1 };
+const brandScale: Record<string, number> = { "Monkey Banana": 1.15, Sontronics: 1.1, Nord: 0.9 };
 const brandUrls: Record<string, string> = {
   Reloop: "https://www.reloop.com",
   Hercules: "https://www.hercules.com",
@@ -210,6 +216,11 @@ const brandUrls: Record<string, string> = {
   Focusrite: "https://focusrite.com",
   Sontronics: "https://www.sontronics.com",
   Sonarworks: "https://www.sonarworks.com",
+  Novation: "https://novationmusic.com",
+  Arturia: "https://www.arturia.com",
+  Sequential: "https://sequential.com",
+  "Teenage Engineering": "https://teenage.engineering",
+  Nord: "https://www.nordkeyboards.com",
 };
 const b = (name: string) => ({
   name,
