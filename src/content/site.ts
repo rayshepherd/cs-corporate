@@ -245,6 +245,7 @@ const brandUrls: Record<string, string> = {
   Gibson: "https://www.gibson.com",
   Epiphone: "https://www.epiphone.com",
   "Solar Guitars": "https://www.solar-guitars.com",
+  "S by Solar": "https://www.sbysolar.com/",
   Orange: "https://orangeamps.com",
   EBS: "https://www.ebssweden.com",
   Strymon: "https://www.strymon.net",
