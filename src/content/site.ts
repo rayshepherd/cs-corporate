@@ -72,7 +72,7 @@ export const about = {
   heading: "Who we are",
   paragraphs: [
     "Concepts & Standards S.A.R.L. holds exclusive distribution rights for 37 of the world’s most respected music " +
-      "brands. Our portfolio runs from DJ decks and studio monitors to synthesizers, guitars, amplifiers, drums and cymbals.",
+      "brands. Our portfolio runs from DJ decks and studio monitors to synthesizers, guitars, amplifiers, drums, cymbals and all related accessories.",
     "We act as each brand’s partner on the ground in order to help them reach new markets where we thrive. " +
       "We import and hold stock, set local pricing, support a network of resellers across the country, and look " +
       "after every product long after it is sold.",
@@ -158,8 +158,8 @@ export const ownBrands = {
       url: "https://djlab-lb.com",
       // Shown under the text; a link appears once its address is filled in
       social: [
-        { label: "Instagram", url: "" },
-        { label: "Facebook", url: "" },
+        { label: "Instagram", url: "https://www.instagram.com/djlab.beirut" },
+        { label: "Facebook", url: "https://www.facebook.com/djlab.xyz" },
       ],
     },
     {
