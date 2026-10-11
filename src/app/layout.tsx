@@ -20,6 +20,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: company.shortName,
   },
+  // Share image (WhatsApp, LinkedIn, X…) comes from src/app/opengraph-image.jpg and twitter-image.jpg
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
