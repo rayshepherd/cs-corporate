@@ -10,7 +10,7 @@ import { collection, config, fields, singleton } from "@keystatic/core";
  * On the live site it signs in through Keystatic Cloud and commits to GitHub.
  */
 
-const CLOUD_PROJECT = "concepts-and-standards/website"; // Keystatic Cloud team/project
+const CLOUD_PROJECT = "concepts-standards/cs-corporate"; // Keystatic Cloud team/project
 
 const text = (label: string, description?: string) => fields.text({ label, description });
 const longText = (label: string, description?: string) => fields.text({ label, description, multiline: true });
