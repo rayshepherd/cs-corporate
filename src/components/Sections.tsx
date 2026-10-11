@@ -180,23 +180,26 @@ function Group() {
 const LOGO_AREA = 4200; // px² each logo covers
 const LOGO_MAX_W = 160;
 const LOGO_MAX_H = 52;
+const LOGO_BOX_H = 56; // every square or rectangular badge logo gets exactly this height
 
 function BrandMark({
   name,
   logo,
   size = "md",
   scale = 1,
+  boxed = false,
 }: {
   name: string;
   logo: string;
   size?: "md" | "lg";
   scale?: number;
+  boxed?: boolean;
 }) {
   if (logo && size === "md") {
     const { w, h } = logoSize(logo);
     const ratio = w / h;
     let height = Math.sqrt(LOGO_AREA / ratio);
-    height = Math.min(height, LOGO_MAX_H, LOGO_MAX_W / ratio) * scale;
+    height = boxed ? LOGO_BOX_H : Math.min(height, LOGO_MAX_H, LOGO_MAX_W / ratio) * scale;
     const width = height * ratio;
     return (
       <Image
@@ -236,7 +239,7 @@ export function Brands() {
               {/* Logos flow in rows with the same gap between every pair, whatever each logo's width */}
               <ul className="flex flex-wrap items-center gap-x-12 gap-y-6 md:gap-x-16">
                 {cat.brands.map((b) => {
-                  const inner = <BrandMark name={b.name} logo={b.logo} scale={b.scale} />;
+                  const inner = <BrandMark name={b.name} logo={b.logo} scale={b.scale} boxed={b.boxed} />;
                   return (
                     <li key={b.name} className="flex h-20 items-center">
                       {b.url ? (

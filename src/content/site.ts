@@ -202,8 +202,19 @@ const brandLogos: Record<string, string> = {
   "Teenage Engineering": "/logos/brands/teenage-engineering.svg",
   Nord: "/logos/brands/nord.svg",
   "GEWA Keys": "/logos/brands/gewa-keys.svg",
+  Gibson: "/logos/brands/gibson.svg",
+  Epiphone: "/logos/brands/epiphone.svg",
+  "Solar Guitars": "/logos/brands/solar-guitars.svg",
+  "S by Solar": "/logos/brands/s-by-solar.svg",
+  Orange: "/logos/brands/orange.svg",
+  EBS: "/logos/brands/ebs.svg",
+  Strymon: "/logos/brands/strymon.svg",
+  Palmer: "/logos/brands/palmer.svg",
+  "GHS Strings": "/logos/brands/ghs-strings.svg",
 };
-const brandScale: Record<string, number> = { "Monkey Banana": 1.15, Sontronics: 1.1, Nord: 0.9 };
+const brandScale: Record<string, number> = { "Monkey Banana": 1.15, Sontronics: 1.1 };
+/** Logos that are a solid square or rectangle (a badge). They all share one fixed height. */
+const brandBoxed = new Set(["KRK Systems", "Nord", "EBS"]);
 const brandUrls: Record<string, string> = {
   Reloop: "https://www.reloop.com",
   Hercules: "https://www.hercules.com",
@@ -221,12 +232,20 @@ const brandUrls: Record<string, string> = {
   Sequential: "https://sequential.com",
   "Teenage Engineering": "https://teenage.engineering",
   Nord: "https://www.nordkeyboards.com",
+  Gibson: "https://www.gibson.com",
+  Epiphone: "https://www.epiphone.com",
+  "Solar Guitars": "https://www.solar-guitars.com",
+  Orange: "https://orangeamps.com",
+  EBS: "https://www.ebssweden.com",
+  Strymon: "https://www.strymon.net",
+  "GHS Strings": "https://www.ghsstrings.com",
 };
 const b = (name: string) => ({
   name,
   logo: brandLogos[name] ?? "",
   url: brandUrls[name] ?? "",
   scale: brandScale[name] ?? 1,
+  boxed: brandBoxed.has(name),
 });
 export const distributedBrands = {
   heading: "Brands we distribute",
